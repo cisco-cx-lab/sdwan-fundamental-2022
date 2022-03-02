@@ -117,25 +117,25 @@ In this lab, all SDWAN controllers including vManage, vSmart and vBond are pre-c
 <li>3.1.1. <strong>Verify DC connectivity</strong>
 In this task, attendee will verify reachability from DC to remote site1 and site2.</li>
 </ul>
-<p>Reference <strong>Device access</strong> table for login IP and credential. 
+<p>Reference <strong>Device access</strong> table for login IP and credential.
 SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.</p>
 <p>Run <code>show ip bgp summary</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.PNG" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.png" width="600"/>
 </br></br></p>
 <p>Run <code>show ip route bgp</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.PNG" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.png" width="600"/>
 </br></br></p>
 <p>Verify reachability to <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>
 Run <code>ping 10.10.11.1</code> and <code>ping 10.10.12.1</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_c.PNG" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_c.png" width="600"/>
 </br></br></p>
 <p>Verify reachability to <strong>Site1-VM1</strong> and <strong>site2-VM1</strong>
 Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.PNG" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.png" width="600"/>
 </br></br></p>
 <ul>
 <li>3.1.2. <strong>vManage walk through</strong>
