@@ -104,7 +104,11 @@
               
                 <h2 id="cx-sd-wan-fundamental-training-lab-guide">CX SD-WAN Fundamental Training Lab Guide</h2>
 <h2 id="introduction"><strong>Introduction</strong></h2>
+<p>Welcome to CX SD-WAN fundamental training lab. This lab covers basic SD-WAN knowledge including onboarding WAN Edge, configuring feature device template, basic Hub-n-Spoke central control policy and common migration scenario.</p>
+<p>The lab is intended for attendee has no prior SD-WAN knowledge. The instruction in this lab guide can be used for this training and also reference for future deployment.</p>
+<p>Attendee for this training will gain SD-WAN knowledge and hands on experience from this lab.</p>
 <h2 id="1-lab-access">1. Lab Access</h2>
+<p>The lab is designed using PoC Tool. To save attendee's time, the lab topology is pre-loaded and deployed. Each attendee has own pod with exact same setting to work on. To access the pod, attendee needs to anyconnect into dCloud using the provided login credential.</p>
 <h5 id="11-anyconnect-to-dcloud">1.1. anyconnect to dCloud</h5>
 <p>Connect to dCloud <strong>dcloud-rtp-anyconnect.cisco.com</strong>
 <br>
@@ -130,7 +134,7 @@
 <h5 id="14-verify-lab-topology">1.4. Verify lab topology</h5>
 <p><strong>Note:</strong> the lab topology has been pre-loaded for each pod. After login POC-tool console, you should see topology from 'Master View'</p>
 <p></br></br>
-- Login vManage to verify all controllers and WAN edges are up and running.
+- Login vManage with <strong>admin/pocadmin</strong> to verify all controllers and WAN edges are up and running.
 <a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></p>
 <p></br></br>
 <img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_c.PNG" width="600"/>
@@ -141,7 +145,10 @@
 </li>
 </ul>
 <h2 id="2-lab-topology">2. Lab Topology</h2>
-<p>The lab is built with (NFV) network function virtualization. There is no physical appliance in the lab. To view the topology for each SDWAN site, login POC tool console and click the site name from the Topology View on the left.</p>
+<p>The lab is built with (NFV) network function virtualization. There is no physical appliance in the lab. You can find the lab interface and addressing details from below diagram.</p>
+<p></br><br>
+<img src="" width="600"/>
+</br></br></p>
 <p>The connectivity and basic routing are pre-configured for the lab; here is the summary of the IP schema and information for each site.</p>
 <table>
 <thead>
@@ -171,8 +178,51 @@
 <td></td>
 <td>Static</td>
 </tr>
+<tr>
+<td>DC</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Legacy Site</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Branch1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Branch2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<h5 id="21-device-access">2.1. Device access</h5>
+<p>Below table provides the IP address and credentials for the devices used in this lab. Alternatively, you can also find the login information from POC Tool portal.</p>
+<p>---|---|---
+Device|SSH|Credential
+vManage||
+vSmart||
+vBond||
+dc1-WAN-Agg||
+dc1-cedge1||
+dc1-cedge2||
+dc1-vm1||
+site1-r1||
+br1-ce1||
+site1-vm1||
+legacy-r1||
+site2-vm1||
+br3-ce1||
+br3-ce2||
+site3-vm1||</p>
               
             </div>
           </div>

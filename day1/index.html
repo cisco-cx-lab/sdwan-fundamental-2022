@@ -106,13 +106,48 @@
               
                 <h2 id="3-lab-tasks">3. Lab Tasks</h2>
 <h3 id="31-day-1-tasks"><strong>3.1. Day 1 tasks</strong></h3>
-<p>In Day 1 lab,</p>
+<p>In Day 1's lab, attendee will learn how to onboard virtual Edge router CSR1kv into the SDWAN fabric, and how to create device template using feature template for basic SDWAN features.</p>
+<p>Similar to real world scenario, for SDWAN deployment, the first step is to install controllers. It is common to use Cisco hosted controller. The Cisco CloudOps team will take care of the controller design and installation. Attendee can reference the Cisco SD-WAN CloudOps document for detail information.
+https://www.cisco.com/c/en/us/td/docs/routers/sdwan/knowledge-base/CloudOps/b-cisco-sdwan-cloudops.html
+Another controller deployment model is on-premise controller. Attendee can reference the SDWAN getting started guide for controller installation.
+https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/sdwan-xe-gs-book/cisco-sd-wan-overlay-network-bringup.html
+In this lab, all SDWAN controllers including vManage, vSmart and vBond are pre-configured for each pod.</p>
+<p>After controllers are up, the next step is to bring up the headend or datacenter. The headend or datacenter will function as transit site between SDWAN and non SDWAN site. In this lab, DC WAN Edges are pre-configured and onboarded to SDWAN fabric. Attendee needs to review the SDWAN basic template configuration and verify connectivity. To make the DC as transit site between SDWAN and non SDWAN, attendee needs to configure the WAN Edge router to establish OSPF neighbor with DC Router and redistribute the OSPF learned routes into OMP.</p>
+<ul>
+<li>3.1.1. <strong>Verify DC connectivity</strong>
+In this task, attendee will verify reachability from DC to remote site1 and site2.</li>
+</ul>
+<p>Reference <strong>Device access</strong> table for login IP and credential. 
+SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.</p>
+<p>Run <code>show ip bgp summary</code>
+</br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.PNG" width="600"/>
+</br></br></p>
+<p>Run <code>show ip route bgp</code>
+</br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.PNG" width="600"/>
+</br></br></p>
+<p>Verify reachability to <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>
+Run <code>ping 10.10.11.1</code> and <code>ping 10.10.12.1</code>
+</br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_c.PNG" width="600"/>
+</br></br></p>
+<p>Verify reachability to <strong>Site1-VM1</strong> and <strong>site2-VM1</strong>
+Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
+</br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.PNG" width="600"/>
+</br></br></p>
+<ul>
+<li>3.1.2. <strong>vManage walk through</strong>
+In this task, attendee will walk through the vManage GUI.</li>
+</ul>
+<p>Login vManage from <strong>https://198.18.133.200:8443</strong>
+<strong>Note</strong> Please ignore the self sign cert warning and proceed.</p>
 <ul>
 <li>
-<p>3.1.1. <strong>Verify DC connectivity</strong></p>
-</li>
-<li>
-<p>3.1.2. <strong>Verify DC Templates</strong></p>
+<p>3.1.2. <strong>Review DC Edge Device Templates</strong>
+In this task, attendee will review the pre-configured device templates for <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>.
+Login to vManage using <strong>admin/pocadmin</strong> for username/password, then click Enter.</p>
 </li>
 <li>
 <p>3.1.3. <strong>Add OSPF to DC Device Template</strong></p>
