@@ -117,15 +117,12 @@ Another controller deployment model is on-premise controller. Attendee can refer
 </p>
 In this lab, all SDWAN controllers including vManage, vSmart and vBond are pre-configured for each pod.</p>
 <p>After controllers are up, the next step is to bring up the headend or datacenter. The headend or datacenter will function as transit site between SDWAN and non SDWAN site. In this lab, DC WAN Edges are pre-configured and onboarded to SDWAN fabric. Attendee needs to review the SDWAN basic template configuration and verify connectivity. To make the DC as transit site between SDWAN and non SDWAN, attendee needs to configure the WAN Edge router to establish OSPF neighbor with DC Router and redistribute the OSPF learned routes into OMP.</p>
+<hr />
 <ul>
-<li>
-<p>3.1.1. <strong>Verify DC connectivity</strong>
+<li>3.1.1. <strong>Verify DC connectivity</strong>
 In this task, attendee will verify reachability from DC to remote site1 and site2.
-Reference <strong>Device access</strong> table for login IP and credential. </P></p>
-</li>
-<li>
-<p><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.</p>
-</li>
+Reference <strong>Device access</strong> table for login IP and credential. </P></li>
+<li><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.</li>
 </ul>
 <p>Run <code>show ip bgp summary</code>
 </br></br>
@@ -134,31 +131,28 @@ Reference <strong>Device access</strong> table for login IP and credential. </P>
 <p>Run <code>show ip route bgp</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.png" width="600"/>
-</br></br></p>
-<ul>
-<li>
-<p><strong>Step2</strong> Verify reachability to <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>
+</br></br>
+  - <strong>Step2</strong> Verify reachability to <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>
 Run <code>ping 10.10.11.1</code> and <code>ping 10.10.12.1</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_c.png" width="600"/>
-</br></br></p>
-</li>
-<li>
-<p><strong>Step3</strong> Verify reachability to <strong>Site1-VM1</strong> and <strong>site2-VM1</strong>
+</br></br>
+  - <strong>Step3</strong> Verify reachability to <strong>Site1-VM1</strong> and <strong>site2-VM1</strong>
 Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.png" width="600"/>
 </br></br></p>
-</li>
-<li>
-<p>3.1.2. <strong>vManage walk through</strong>
-In this task, attendee will walk through the vManage GUI.</p>
-</li>
+<ul>
+<li>3.1.2. <strong>vManage walk through</strong>
+In this task, attendee will walk through the vManage GUI.</li>
 <li>
 <p><strong>Step1</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>
 </p>
 <strong>Note</strong> Please ignore the self sign cert warning and proceed.
-Login to vManage using <strong>admin/pocadmin</strong> for username/password, then click Enter.</p>
+Login to vManage using <strong>admin/pocadmin</strong> for username/password, then click Enter.
+</br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_a.png" width="600"/>
+</br></br></p>
 </li>
 <li>
 <p>3.1.2. <strong>Review DC Edge Device Templates</strong>
