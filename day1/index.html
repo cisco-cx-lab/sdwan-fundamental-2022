@@ -226,7 +226,7 @@ In this task, attendee will review the pre-configured device templates for <stro
 <ul>
 <li>3.1.4. <strong>Add OSPF to DC Device Template</strong></li>
 </ul>
-<p>In this section, attendee will modify the pre-configured device template and add OSPF as routing protocol for service side VPN. After configuring OSPF, attendee will verify OSPF neighbor with dc-wan-agg router and all site prefixes are being advertised to SDWAN fabric over OMP.</p>
+<p>In this section, attendee will modify the pre-configured device template and add OSPF as routing protocol for service side VPN. After configuring OSPF, attendee will verify OSPF neighbor with dc-wan-agg router.</p>
 <ul>
 <li><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</li>
 </ul>
@@ -291,7 +291,59 @@ In this task, attendee will review the pre-configured device templates for <stro
   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_i.png" width="600"/>
   </br></br></p>
 <ul>
-<li><strong>Step5</strong> Now you have</li>
+<li><strong>Step5</strong> Click <strong>Device</strong> on the top to switch to device template. Locate one of the device template and click the <strong>'...'</strong> on the right and select <strong>Edit</strong> to add new OSPF template to pre-configured DC device template.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_j.png" width="600"/>
+  </br></br></p>
+<ul>
+<li><strong>Step6</strong> Move to <strong>Service VPN</strong> section, highlight the template of <strong>VPN_1</strong> click the <strong>...</strong> and select <strong>Edit</strong></li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_k.png" width="600"/>
+ </br></br></p>
+<ul>
+<li><strong>Step7</strong> Select <strong>Cisco OSPF</strong> from the <strong>Additional Cisco VPN Templates</strong> panel on the right. Select <strong>CX-VPN1-OSPF-V01</strong> from the drop down list for Cisco OSPF template.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_l.png" width="600"/>
+  </br></br></p>
+<ul>
+<li>
+<p><strong>Step8</strong> Click <strong>Save</strong> to return back to device template and click <strong>Update</strong> to update the device template.</p>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_m.png" width="600"/>
+</br></br></p>
+</li>
+</ul>
+<p><strong>Note</strong> Changing device template will trigger configuration update for device attached to the device template. In production network, it is common practice to replicate the existing device template, modify on the new device template then associate device to the new device template.</p>
+<ul>
+<li><strong>Step9</strong> Click the <strong>...</strong> to update device configuration. Enter <strong>GigabitEthernet3</strong> in the field for new variable you just created in OSPF teamplte.</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_n.png" width="600"/>
+ </br></br></p>
+<ul>
+<li>
+<p><strong>Step10</strong> Click <strong>Update</strong> to save the change, and click <strong>Next</strong> to the configuration preview</p>
+</li>
+<li>
+<p><strong>Step11</strong> click the device name on the left panel, then click <strong>Config Diff</strong> to do a configuration <strong>Side by Side</strong> comparison</p>
+</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_n.png" width="600"/>
+ </br></br></p>
+<ul>
+<li>
+<p><strong>Step12</strong> After reviewing the new configuration change, click <strong>Configure Devices</strong> to push the configuration.</p>
+</li>
+<li>
+<p><strong>Step13</strong> Wait for the configuration push is successfully finished. <strong>Repeat the same above steps to add OSPF on the other pre-configured DC device template.</strong></p>
+</li>
+<li>
+<p><strong>Step14</strong> </p>
+</li>
 </ul>
 <p><strong>Note</strong> :Name your Feature template and Device template starting with <strong>"CX"</strong></p>
 <ul>
