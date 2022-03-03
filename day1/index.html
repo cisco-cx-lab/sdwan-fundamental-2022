@@ -128,23 +128,23 @@ Reference <strong>Device access</strong> table for login IP and credential. </P>
 <p><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.
 Run <code>show ip bgp summary</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.png" width="800"/>
 </br></br></p>
 </li>
 </ul>
 <p>Run <code>show ip route bgp</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.png" width="800"/>
 </br></br>
   - <strong>Step2</strong> Verify reachability to <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>
 Run <code>ping 10.10.11.1</code> and <code>ping 10.10.12.1</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_c.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_c.png" width="800"/>
 </br></br>
   - <strong>Step3</strong> Verify reachability to <strong>Site1-VM1</strong> and <strong>site2-VM1</strong>
 Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.png" width="800"/>
 </br></br></p>
 <ul>
 <li>3.1.2. <strong>vManage walk through</strong></li>
@@ -157,19 +157,19 @@ Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
 <strong>Note</strong> Please ignore the self sign cert warning and proceed.
 Login to vManage using <strong>admin/pocadmin</strong> for username/password, then click <strong>Log In</strong>.
 </br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_a.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_a.png" width="800"/>
 </br></br></p>
 </li>
 <li>
 <p><strong>Step2</strong> On the main dashboard, verify the <strong>SUMMARY</strong> panel for quick overview of the fabric inventory; verify <strong>Control Status</strong> for overview of control channels.
   </br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_b.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_b.png" width="800"/>
   </br></br></p>
 </li>
 <li>
 <p><strong>Step3</strong> Navigate to the panel on the left and click <strong>Monitor - Network</strong> for detail information of each device in the fabric.
   </br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_c.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_c.png" width="800"/>
   </br></br></p>
 </li>
 <li>
@@ -178,23 +178,23 @@ Login to vManage using <strong>admin/pocadmin</strong> for username/password, th
 </li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_d.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_d.png" width="800"/>
   </br></br></p>
 <ul>
 <li><strong>Step5</strong> Navigate to the panel on the left and click <strong>Configuration - Certificates</strong> for the WAN Edge and Controllers certificate status.</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_e.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_e.png" width="800"/>
   </br></br></p>
 <p>On the <strong>WAN Edge List</strong> certificate page, pay attention to the state of the certificate, chassis number as well as Serial No/Token. Attendee will use information on this page to onboard virtual WAN Edge in this lab.</p>
 <p></br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_f.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_f.png" width="800"/>
 </br></br></p>
 <ul>
 <li><strong>Step6</strong> Navigate to the panel on the left and click <strong>Tools - SSH Terminal</strong> for the build in device access tool.</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_g.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_g.png" width="800"/>
   </br></br></p>
 <p>Feel free to explore other operations on vManage portal.</p>
 <ul>
@@ -207,20 +207,20 @@ In this task, attendee will review the pre-configured device templates for <stro
 </li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_a.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_a.png" width="800"/>
   </br></br></p>
 <ul>
 <li>Attendee should see two prebuilt device templates as shown in the screenshot above.</li>
 <li><strong>Step2</strong> Locate one of the device template and click the <strong>'...'</strong> on the right and select <strong>Edit</strong> to view the template configuration</li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_b.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_b.png" width="800"/>
  </br></br></p>
 <ul>
 <li>This will list all <strong>feature templates</strong> associated to the device template. You can click each feature template and select <strong>View Template</strong> to view the configuration of the feature template.</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_c.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_c.png" width="800"/>
   </br></br></p>
 <p>A device template consists of few sections, each section has it own set of feature templates. The mandatory feature templates are marked as <strong>'*'</strong>.</p>
 <ul>
@@ -231,19 +231,19 @@ In this task, attendee will review the pre-configured device templates for <stro
 <li><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_a.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_a.png" width="800"/>
   </br></br></p>
 <ul>
 <li><strong>Step2</strong> Click <strong>Add Template</strong>, find and select <strong>CSR 1000v</strong> under <strong>select Devices</strong></li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_b.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_b.png" width="800"/>
   </br></br></p>
 <ul>
 <li><strong>Step3</strong> Find and select <strong>Cisco OSPF</strong> template on the right</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_c.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_c.png" width="800"/>
   </br></br></p>
 <ul>
 <li>
@@ -253,7 +253,7 @@ In this task, attendee will review the pre-configured device templates for <stro
 <li><strong>Description</strong>|<strong>CX-VPN1-OSPF-V01</strong>|</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_d.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_d.png" width="800"/>
   </br></br></p>
 </li>
 <li>
@@ -262,57 +262,57 @@ In this task, attendee will review the pre-configured device templates for <stro
 </li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_e.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_e.png" width="800"/>
  </br></br></p>
 <ul>
-<li>Click <strong>New Area</strong> under AREA section, enter <strong>0</strong> in <strong>Area Number</strong>, click <strong>+ Add Interface</strong> to add interface that participants in OSPF process</li>
+<li>Click <strong>New Area</strong> under AREA section, enter <strong>100</strong> in <strong>Area Number</strong>, click <strong>+ Add Interface</strong> to add interface that participants in OSPF process</li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_f.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_f.png" width="800"/>
  </br></br></p>
 <ul>
 <li>Click <strong>Add Interface</strong> from the popup window for Interface configuration</li>
 <li>Click the drop down for <strong>Interface Name</strong>, move your mouse to <strong>Device Specific</strong>,  enter <strong>VPN1_OSPF_INT</strong> as variable for OSPF Interface Name</li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_g.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_g.png" width="800"/>
  </br></br></p>
 <ul>
 <li>Explore other OSPF configuration options but for lab leave other filed as default and click <strong>Add</strong> to add the interface variable for OSPF area 0.</li>
 <li>Click <strong>Add</strong> to add OSPF Area config</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_h.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_h.png" width="800"/>
   </br></br></p>
 <ul>
 <li>Leave other field as default and click <strong>Save</strong> to finish configuring OSPF feature template</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_i.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_i.png" width="800"/>
   </br></br></p>
 <ul>
 <li><strong>Step5</strong> Click <strong>Device</strong> on the top to switch to device template. Locate one of the device template and click the <strong>'...'</strong> on the right and select <strong>Edit</strong> to add new OSPF template to pre-configured DC device template.</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_j.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_j.png" width="800"/>
   </br></br></p>
 <ul>
 <li><strong>Step6</strong> Move to <strong>Service VPN</strong> section, highlight the template of <strong>VPN_1</strong> click the <strong>...</strong> and select <strong>Edit</strong></li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_k.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_k.png" width="800"/>
  </br></br></p>
 <ul>
 <li><strong>Step7</strong> Select <strong>Cisco OSPF</strong> from the <strong>Additional Cisco VPN Templates</strong> panel on the right. Select <strong>CX-VPN1-OSPF-V01</strong> from the drop down list for Cisco OSPF template.</li>
 </ul>
 <p></br></br>
-  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_l.png" width="600"/>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_l.png" width="800"/>
   </br></br></p>
 <ul>
 <li>
 <p><strong>Step8</strong> Click <strong>Save</strong> to return back to device template and click <strong>Update</strong> to update the device template.</p>
 <p></br></br>
-<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_m.png" width="600"/>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_m.png" width="800"/>
 </br></br></p>
 </li>
 </ul>
@@ -321,7 +321,7 @@ In this task, attendee will review the pre-configured device templates for <stro
 <li><strong>Step9</strong> Click the <strong>...</strong> to update device configuration. Enter <strong>GigabitEthernet3</strong> in the field for new variable you just created in OSPF teamplte.</li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_n.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_n.png" width="800"/>
  </br></br></p>
 <ul>
 <li>
@@ -332,7 +332,7 @@ In this task, attendee will review the pre-configured device templates for <stro
 </li>
 </ul>
 <p></br></br>
- <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_n.png" width="600"/>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_n.png" width="800"/>
  </br></br></p>
 <ul>
 <li>
@@ -342,7 +342,7 @@ In this task, attendee will review the pre-configured device templates for <stro
 <p><strong>Step13</strong> Wait for the configuration push is successfully finished. <strong>Repeat the same above steps to add OSPF on the other pre-configured DC device template.</strong></p>
 </li>
 <li>
-<p><strong>Step14</strong> </p>
+<p><strong>Step14</strong></p>
 </li>
 </ul>
 <p><strong>Note</strong> :Name your Feature template and Device template starting with <strong>"CX"</strong></p>
