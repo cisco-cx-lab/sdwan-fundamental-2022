@@ -234,7 +234,64 @@ In this task, attendee will review the pre-configured device templates for <stro
   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_a.png" width="600"/>
   </br></br></p>
 <ul>
-<li><strong>Step2</strong> Click <strong>Add Template</strong></li>
+<li><strong>Step2</strong> Click <strong>Add Template</strong>, find and select <strong>CSR 1000v</strong> under <strong>select Devices</strong></li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_b.png" width="600"/>
+  </br></br></p>
+<ul>
+<li><strong>Step3</strong> Find and select <strong>Cisco OSPF</strong> template on the right</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_c.png" width="600"/>
+  </br></br></p>
+<ul>
+<li>
+<p><strong>Step4</strong> Create OSPF template with following name and description. Leave <strong>BASIC CONFIGURATION</strong> as the default.   </p>
+<ul>
+<li><strong>Template Name</strong>|<strong>CX-VPN1-OSPF-V01</strong>|</li>
+<li><strong>Description</strong>|<strong>CX-VPN1-OSPF-V01</strong>|</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_d.png" width="600"/>
+  </br></br></p>
+</li>
+<li>
+<p>Click <strong>New Redistribute</strong> under REDISTRIBUTE section, select <strong>omp</strong> from protocol drop down list then click <strong>Add</strong>
+<strong>Note</strong> In the lab, we will not add Route Policy, but in production deployment it's good practice to use route policy to tag routes being redistributed from OMP into OSPF</p>
+</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_e.png" width="600"/>
+ </br></br></p>
+<ul>
+<li>Click <strong>New Area</strong> under AREA section, enter <strong>0</strong> in <strong>Area Number</strong>, click <strong>+ Add Interface</strong> to add interface that participants in OSPF process</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_f.png" width="600"/>
+ </br></br></p>
+<ul>
+<li>Click <strong>Add Interface</strong> from the popup window for Interface configuration</li>
+<li>Click the drop down for <strong>Interface Name</strong>, move your mouse to <strong>Device Specific</strong>,  enter <strong>VPN1_OSPF_INT</strong> as variable for OSPF Interface Name</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_g.png" width="600"/>
+ </br></br></p>
+<ul>
+<li>Explore other OSPF configuration options but for lab leave other filed as default and click <strong>Add</strong> to add the interface variable for OSPF area 0.</li>
+<li>Click <strong>Add</strong> to add OSPF Area config</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_h.png" width="600"/>
+  </br></br></p>
+<ul>
+<li>Leave other field as default and click <strong>Save</strong> to finish configuring OSPF feature template</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_i.png" width="600"/>
+  </br></br></p>
+<ul>
+<li><strong>Step5</strong> Now you have</li>
 </ul>
 <p><strong>Note</strong> :Name your Feature template and Device template starting with <strong>"CX"</strong></p>
 <ul>
