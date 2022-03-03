@@ -125,13 +125,13 @@ In this task, attendee will verify reachability from DC to remote site1 and site
 Reference <strong>Device access</strong> table for login IP and credential. </P></p>
 </li>
 <li>
-<p><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.</p>
-</li>
-</ul>
-<p>Run <code>show ip bgp summary</code>
+<p><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.
+Run <code>show ip bgp summary</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.png" width="600"/>
 </br></br></p>
+</li>
+</ul>
 <p>Run <code>show ip route bgp</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_b.png" width="600"/>
@@ -155,11 +155,41 @@ In this task, attendee will walk through the vManage GUI.</p>
 <p><strong>Step1</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>
 </p>
 <strong>Note</strong> Please ignore the self sign cert warning and proceed.
-Login to vManage using <strong>admin/pocadmin</strong> for username/password, then click Enter.
+Login to vManage using <strong>admin/pocadmin</strong> for username/password, then click <strong>Log In</strong>.
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_a.png" width="600"/>
 </br></br></p>
 </li>
+<li>
+<p><strong>Step2</strong> On the main dashboard, verify the <strong>SUMMARY</strong> panel for quick overview of the fabric inventory; verify <strong>Control Status</strong> for overview of control channels.
+  </br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_b.png" width="600"/>
+  </br></br></p>
+</li>
+<li>
+<p><strong>Step3</strong> Navigate to the panel on the left and click <strong>Monitor - Network</strong> for detail information of each device in the fabric.
+  </br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_c.png" width="600"/>
+  </br></br></p>
+</li>
+<li>
+<p><strong>Step4</strong> click device name <strong>dc1-cedge1</strong> to access the device specific information. This is main page to verify device information, statistics, and troubleshooting options. Explore the page and get familiar with navigation panel on the left such as supported troubleshooting capability, commands available from Real Time.</p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_d.png" width="600"/>
+  </br></br></p>
+<ul>
+<li><strong>Step5</strong> Navigate to the panel on the left and click <strong>Configuration - Certificates</strong> for the WAN Edge and Controllers certificate status.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_e.png" width="600"/>
+  </br></br></p>
+<p>On the <strong>WAN Edge List</strong> certificate page, pay attention to the state of the certificate, chassis number as well as Serial No/Token. Attendee will use information on this page to onboard virtual WAN Edge in this lab.</p>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_f.png" width="600"/>
+</br></br></p>
+<ul>
 <li>
 <p>3.1.2. <strong>Review DC Edge Device Templates</strong>
 In this task, attendee will review the pre-configured device templates for <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>.</p>
