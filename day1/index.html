@@ -147,10 +147,10 @@ Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.png" width="600"/>
 </br></br></p>
 <ul>
-<li>
-<p>3.1.2. <strong>vManage walk through</strong>
-In this task, attendee will walk through the vManage GUI.</p>
-</li>
+<li>3.1.2. <strong>vManage walk through</strong></li>
+</ul>
+<p>In this task, attendee will walk through the vManage GUI.</p>
+<ul>
 <li>
 <p><strong>Step1</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>
 </p>
@@ -173,7 +173,8 @@ Login to vManage using <strong>admin/pocadmin</strong> for username/password, th
   </br></br></p>
 </li>
 <li>
-<p><strong>Step4</strong> click device name <strong>dc1-cedge1</strong> to access the device specific information. This is main page to verify device information, statistics, and troubleshooting options. Explore the page and get familiar with navigation panel on the left such as supported troubleshooting capability, commands available from Real Time.</p>
+<p><strong>Step4</strong> click device name <strong>dc1-cedge1</strong> to access the device specific information.
+  This is main page to verify device information, statistics, and troubleshooting options. Explore the page and get familiar with navigation panel on the left such as supported troubleshooting capability, commands available from Real Time.</p>
 </li>
 </ul>
 <p></br></br>
@@ -190,13 +191,50 @@ Login to vManage using <strong>admin/pocadmin</strong> for username/password, th
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_f.png" width="600"/>
 </br></br></p>
 <ul>
+<li><strong>Step6</strong> Navigate to the panel on the left and click <strong>Tools - SSH Terminal</strong> for the build in device access tool.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_g.png" width="600"/>
+  </br></br></p>
+<p>Feel free to explore other operations on vManage portal.</p>
+<ul>
 <li>
-<p>3.1.2. <strong>Review DC Edge Device Templates</strong>
+<p>3.1.3. <strong>Review DC Edge Device Templates</strong>
 In this task, attendee will review the pre-configured device templates for <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>.</p>
 </li>
 <li>
-<p>3.1.3. <strong>Add OSPF to DC Device Template</strong></p>
+<p><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong> for the device and feature template.</p>
 </li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_a.png" width="600"/>
+  </br></br></p>
+<ul>
+<li>Attendee should see two prebuilt device templates as shown in the screenshot above.</li>
+<li><strong>Step2</strong> Locate one of the device template and click the <strong>'...'</strong> on the right and select <strong>Edit</strong> to view the template configuration</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_b.png" width="600"/>
+ </br></br></p>
+<ul>
+<li>This will list all <strong>feature templates</strong> associated to the device template. You can click each feature template and select <strong>View Template</strong> to view the configuration of the feature template.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_c.png" width="600"/>
+  </br></br></p>
+<p>A device template consists of few sections, each section has it own set of feature templates. The mandatory feature templates are marked as <strong>'*'</strong>.</p>
+<ul>
+<li>3.1.4. <strong>Add OSPF to DC Device Template</strong></li>
+</ul>
+<p>In this section, attendee will modify the pre-configured device template and add OSPF as routing protocol for service side VPN. After configuring OSPF, attendee will verify OSPF neighbor with dc-wan-agg router and all site prefixes are being advertised to SDWAN fabric over OMP.</p>
+<ul>
+<li><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_4_a.png" width="600"/>
+  </br></br></p>
+<ul>
+<li><strong>Step2</strong> Click <strong>Add Template</strong></li>
 </ul>
 <p><strong>Note</strong> :Name your Feature template and Device template starting with <strong>"CX"</strong></p>
 <ul>
