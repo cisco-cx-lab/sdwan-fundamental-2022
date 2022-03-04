@@ -427,8 +427,8 @@ dc1-cedge2#
 <ul>
 <li><strong>Step1</strong> Login to vSmart-1 and run <code>show omp route vpn 1</code></li>
 </ul>
-<p>```
- vSmart-1# show omp route vpn 1
+<p>```</p>
+<p>vSmart-1# show omp route vpn 1
 Code:
 C   -&gt; chosen
 I   -&gt; installed
@@ -457,7 +457,8 @@ U   -&gt; TLOC unresolved</p>
                            1.10.1.1         68     1003     C,R       installed  1.10.1.1         biz-internet     ipsec  -
                            1.10.1.2         66     1003     C,R       installed  1.10.1.2         mpls             ipsec  -
                            1.10.1.2         68     1003     C,R       installed  1.10.1.2         biz-internet     ipsec  -</p>
-<pre><code>You notice the other site prefixes **&quot;10.30.100.0/24&quot;**,**&quot;10.200.100.0/24&quot;** and **&quot;10.200.200.0/24&quot;** are not showing up on vSmart. In order to pass the prefixes to the fabric, attendee needs to advertise OSPF routes into OMP.
+<pre><code>
+You notice the other site prefixes **&quot;10.30.100.0/24&quot;**,**&quot;10.200.100.0/24&quot;** and **&quot;10.200.200.0/24&quot;** are not showing up on vSmart. In order to pass the prefixes to the fabric, attendee needs to advertise OSPF routes into OMP.
 
   - **Step2** Login vManage from **&lt;https://198.18.133.200:8443&gt;**. Navigate to the panel on the left and click **Configuration - Templates**, then click **Feature** tab on the top to switch to the feature template configuration.
 
