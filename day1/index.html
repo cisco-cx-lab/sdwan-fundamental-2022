@@ -342,9 +342,14 @@ In this task, attendee will review the pre-configured device templates for <stro
 <p><strong>Step13</strong> Wait for the configuration push is successfully finished. <strong>Repeat the same above steps to add OSPF on the other pre-configured DC device template.</strong></p>
 </li>
 <li>
-<p><strong>Step14</strong></p>
+<p><strong>Step14</strong> Login to <strong>dc1-wan-agg</strong>, and run <code>show ip ospf neighbor</code></p>
 </li>
 </ul>
+<p>DC1-WANAgg#show ip ospf neighbor</p>
+<p>Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.10.12.1        1   FULL/BDR        00:00:33    10.10.12.1      GigabitEthernet2
+10.10.11.1        1   FULL/BDR        00:00:32    10.10.11.1      GigabitEthernet1
+DC1-WANAgg#</p>
 <p><strong>Note</strong> :Name your Feature template and Device template starting with <strong>"CX"</strong></p>
 <ul>
 <li>3.1.4. <strong>Verify network prefixes in fabric</strong></li>
