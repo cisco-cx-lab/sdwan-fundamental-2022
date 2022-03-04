@@ -345,11 +345,80 @@ In this task, attendee will review the pre-configured device templates for <stro
 <p><strong>Step14</strong> Login to <strong>dc1-wan-agg</strong>, and run <code>show ip ospf neighbor</code></p>
 </li>
 </ul>
-<p>DC1-WANAgg#show ip ospf neighbor</p>
-<p>Neighbor ID     Pri   State           Dead Time   Address         Interface
+<pre><code> DC1-WANAgg#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
 10.10.12.1        1   FULL/BDR        00:00:33    10.10.12.1      GigabitEthernet2
 10.10.11.1        1   FULL/BDR        00:00:32    10.10.11.1      GigabitEthernet1
-DC1-WANAgg#</p>
+DC1-WANAgg#
+</code></pre>
+<ul>
+<li>login to <strong>dc1-cedge1</strong> and run <code>show ip route vrf 1</code></li>
+</ul>
+<pre><code>dc1-cedge1#show ip route vrf 1
+
+Routing Table: 1
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       &amp; - replicated local route overrides by connected
+
+Gateway of last resort is not set
+
+      10.0.0.0/8 is variably subnetted, 9 subnets, 2 masks
+O E2     10.1.11.0/24 [110/1] via 10.10.11.2, 07:48:43, GigabitEthernet3
+O E2     10.1.12.0/24 [110/1] via 10.10.11.2, 07:48:43, GigabitEthernet3
+C        10.10.11.0/24 is directly connected, GigabitEthernet3
+L        10.10.11.1/32 is directly connected, GigabitEthernet3
+O        10.10.12.0/24 [110/2] via 10.10.11.2, 07:48:43, GigabitEthernet3
+O        10.10.100.0/24 [110/2] via 10.10.11.2, 07:48:43, GigabitEthernet3
+O E2     10.30.100.0/24 [110/1] via 10.10.11.2, 07:48:43, GigabitEthernet3
+O E2     10.200.100.0/24 [110/1] via 10.10.11.2, 07:48:43, GigabitEthernet3
+O E2     10.200.200.0/24 [110/1] via 10.10.11.2, 07:48:43, GigabitEthernet3
+
+</code></pre>
+<ul>
+<li>login to <strong>dc1-cedge2</strong> and run <code>show ip route vrf 1</code></li>
+</ul>
+<pre><code>dc1-cedge2#show ip route vrf 1
+
+Routing Table: 1
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       &amp; - replicated local route overrides by connected
+
+Gateway of last resort is not set
+
+      10.0.0.0/8 is variably subnetted, 9 subnets, 2 masks
+O E2     10.1.11.0/24 [110/1] via 10.10.12.2, 07:53:41, GigabitEthernet3
+O E2     10.1.12.0/24 [110/1] via 10.10.12.2, 07:53:41, GigabitEthernet3
+O        10.10.11.0/24 [110/2] via 10.10.12.2, 07:53:41, GigabitEthernet3
+C        10.10.12.0/24 is directly connected, GigabitEthernet3
+L        10.10.12.1/32 is directly connected, GigabitEthernet3
+O        10.10.100.0/24 [110/2] via 10.10.12.2, 07:53:41, GigabitEthernet3
+O E2     10.30.100.0/24 [110/1] via 10.10.12.2, 07:53:41, GigabitEthernet3
+O E2     10.200.100.0/24 [110/1] via 10.10.12.2, 07:53:41, GigabitEthernet3
+O E2     10.200.200.0/24 [110/1] via 10.10.12.2, 07:53:41, GigabitEthernet3
+dc1-cedge2#
+
+</code></pre>
 <p><strong>Note</strong> :Name your Feature template and Device template starting with <strong>"CX"</strong></p>
 <ul>
 <li>3.1.4. <strong>Verify network prefixes in fabric</strong></li>
