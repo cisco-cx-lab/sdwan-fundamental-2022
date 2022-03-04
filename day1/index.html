@@ -427,8 +427,7 @@ dc1-cedge2#
 <ul>
 <li><strong>Step1</strong> Login to vSmart-1 and run <code>show omp route vpn 1</code></li>
 </ul>
-<p>```</p>
-<p>vSmart-1# show omp route vpn 1
+<pre><code>vSmart-1# show omp route vpn 1
 Code:
 C   -&gt; chosen
 I   -&gt; installed
@@ -441,11 +440,12 @@ Ext -&gt; extranet
 Inv -&gt; invalid
 Stg -&gt; staged
 IA  -&gt; On-demand inactive
-U   -&gt; TLOC unresolved</p>
-<pre><code>                                        PATH                      ATTRIBUTE
-</code></pre>
-<h2 id="vpn-prefix-from-peer-id-label-status-type-tloc-ip-color-encap-preference">VPN    PREFIX              FROM PEER        ID     LABEL    STATUS    TYPE       TLOC IP          COLOR            ENCAP  PREFERENCE</h2>
-<p>1      10.10.11.0/24       1.10.1.1         66     1003     C,R       installed  1.10.1.1         mpls             ipsec  -
+U   -&gt; TLOC unresolved
+
+                                            PATH                      ATTRIBUTE
+VPN    PREFIX              FROM PEER        ID     LABEL    STATUS    TYPE       TLOC IP          COLOR            ENCAP  PREFERENCE
+--------------------------------------------------------------------------------------------------------------------------------------
+1      10.10.11.0/24       1.10.1.1         66     1003     C,R       installed  1.10.1.1         mpls             ipsec  -
                            1.10.1.1         68     1003     C,R       installed  1.10.1.1         biz-internet     ipsec  -
                            1.10.1.2         66     1003     R         installed  1.10.1.2         mpls             ipsec  -
                            1.10.1.2         68     1003     R         installed  1.10.1.2         biz-internet     ipsec  -
@@ -456,40 +456,49 @@ U   -&gt; TLOC unresolved</p>
 1      10.10.100.0/24      1.10.1.1         66     1003     C,R       installed  1.10.1.1         mpls             ipsec  -
                            1.10.1.1         68     1003     C,R       installed  1.10.1.1         biz-internet     ipsec  -
                            1.10.1.2         66     1003     C,R       installed  1.10.1.2         mpls             ipsec  -
-                           1.10.1.2         68     1003     C,R       installed  1.10.1.2         biz-internet     ipsec  -</p>
-<pre><code>
-You notice the other site prefixes **&quot;10.30.100.0/24&quot;**,**&quot;10.200.100.0/24&quot;** and **&quot;10.200.200.0/24&quot;** are not showing up on vSmart. In order to pass the prefixes to the fabric, attendee needs to advertise OSPF routes into OMP.
-
-  - **Step2** Login vManage from **&lt;https://198.18.133.200:8443&gt;**. Navigate to the panel on the left and click **Configuration - Templates**, then click **Feature** tab on the top to switch to the feature template configuration.
-
-  - **Step3** search **vpn_1** in the search box; locate the VPN template, click **...** and select **Edit**
-
-  &lt;/br&gt;&lt;/br&gt;
-  &lt;img src=&quot;https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_5_a.png&quot; width=&quot;800&quot;/&gt;
-  &lt;/br&gt;&lt;/br&gt;
-
-  - **Step4** Click **New Advertise OMP** under Advertise OMP section
-
-  - **Step5** Select **OSPF** from the Protocol drop down list and click **Add**
-
-  &lt;/br&gt;&lt;/br&gt;
-  &lt;img src=&quot;https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_5_b.png&quot; width=&quot;800&quot;/&gt;
-  &lt;/br&gt;&lt;/br&gt;
-
-  - **Step6** Click **Update** - **Next** - **Configure Devices** to trigger the configuration push
-
-  - **Step7** Click the check box to confirm change on 2 devices
-
-  - **Step8** Wait after the configuration push is complete successfully
-
-  &lt;/br&gt;&lt;/br&gt;
-  &lt;img src=&quot;https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_5_d.png&quot; width=&quot;800&quot;/&gt;
-  &lt;/br&gt;&lt;/br&gt;
-
-  - **Step9** Login to vSmart-1 and run `show omp route vpn 1`
-
+                           1.10.1.2         68     1003     C,R       installed  1.10.1.2         biz-internet     ipsec  -
 </code></pre>
-<p>vSmart-1# show omp route vpn 1
+<p>You notice the other site prefixes <strong>"10.30.100.0/24"</strong>,<strong>"10.200.100.0/24"</strong> and <strong>"10.200.200.0/24"</strong> are not showing up on vSmart. In order to pass the prefixes to the fabric, attendee needs to advertise OSPF routes into OMP.</p>
+<ul>
+<li>
+<p><strong>Step2</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</p>
+</li>
+<li>
+<p><strong>Step3</strong> search <strong>vpn_1</strong> in the search box; locate the VPN template, click <strong>...</strong> and select <strong>Edit</strong></p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_5_a.png" width="800"/>
+  </br></br></p>
+<ul>
+<li>
+<p><strong>Step4</strong> Click <strong>New Advertise OMP</strong> under Advertise OMP section</p>
+</li>
+<li>
+<p><strong>Step5</strong> Select <strong>OSPF</strong> from the Protocol drop down list and click <strong>Add</strong></p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_5_b.png" width="800"/>
+  </br></br></p>
+<ul>
+<li>
+<p><strong>Step6</strong> Click <strong>Update</strong> - <strong>Next</strong> - <strong>Configure Devices</strong> to trigger the configuration push</p>
+</li>
+<li>
+<p><strong>Step7</strong> Click the check box to confirm change on 2 devices</p>
+</li>
+<li>
+<p><strong>Step8</strong> Wait after the configuration push is complete successfully</p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_5_d.png" width="800"/>
+  </br></br></p>
+<ul>
+<li><strong>Step9</strong> Login to vSmart-1 and run <code>show omp route vpn 1</code></li>
+</ul>
+<pre><code>vSmart-1# show omp route vpn 1
 Code:
 C   -&gt; chosen
 I   -&gt; installed
@@ -502,11 +511,12 @@ Ext -&gt; extranet
 Inv -&gt; invalid
 Stg -&gt; staged
 IA  -&gt; On-demand inactive
-U   -&gt; TLOC unresolved</p>
-<pre><code>                                        PATH                      ATTRIBUTE
-</code></pre>
-<h2 id="vpn-prefix-from-peer-id-label-status-type-tloc-ip-color-encap-preference_1">VPN    PREFIX              FROM PEER        ID     LABEL    STATUS    TYPE       TLOC IP          COLOR            ENCAP  PREFERENCE</h2>
-<p>1      10.1.11.0/24        1.10.1.1         66     1003     C,R       installed  1.10.1.1         mpls             ipsec  -
+U   -&gt; TLOC unresolved
+
+                                            PATH                      ATTRIBUTE
+VPN    PREFIX              FROM PEER        ID     LABEL    STATUS    TYPE       TLOC IP          COLOR            ENCAP  PREFERENCE
+--------------------------------------------------------------------------------------------------------------------------------------
+1      10.1.11.0/24        1.10.1.1         66     1003     C,R       installed  1.10.1.1         mpls             ipsec  -
                            1.10.1.1         68     1003     C,R       installed  1.10.1.1         biz-internet     ipsec  -
                            1.10.1.2         66     1003     C,R       installed  1.10.1.2         mpls             ipsec  -
                            1.10.1.2         68     1003     C,R       installed  1.10.1.2         biz-internet     ipsec  -
@@ -537,9 +547,10 @@ U   -&gt; TLOC unresolved</p>
 1      10.200.200.0/24     1.10.1.1         66     1003     C,R       installed  1.10.1.1         mpls             ipsec  -
                            1.10.1.1         68     1003     C,R       installed  1.10.1.1         biz-internet     ipsec  -
                            1.10.1.2         66     1003     C,R       installed  1.10.1.2         mpls             ipsec  -
-                           1.10.1.2         68     1003     C,R       installed  1.10.1.2         biz-internet     ipsec  -</p>
-<p>vSmart-1#
-```  </p>
+                           1.10.1.2         68     1003     C,R       installed  1.10.1.2         biz-internet     ipsec  -
+
+vSmart-1#
+</code></pre>
 <ul>
 <li>
 <p>3.1.6. <strong>Onboard WAN Edge in Site3</strong><br><br></p>
