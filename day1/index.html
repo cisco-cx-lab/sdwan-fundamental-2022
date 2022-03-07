@@ -660,6 +660,7 @@ br3-ce1#
 </li>
 </ul>
 <p><strong>Note: attendee will use factory default for the other required feature templates for building device template. In production deployment, you should always use custom specific feature template</strong>
+</br>
 Template Type|Purpose of the template|Template Name
 ---|---|---
 Cisco VPN|VPN 0 FT with single static route|CX_VPN0_Static_Route_v01
@@ -669,9 +670,9 @@ Cisco VPN Interface Ethernet|VPN 1 LAN Interface with static IP and VRRP|CX_VPN1
 Cisco VPN|VPN 2 FT with VRRP LAN Side protocol|CX_VPN2_VRRP_v01
 Cisco VPN Interface Ethernet|VPN 2 LAN Interface with static IP and VRRP|CX_VPN2_VRRP_Int_v01
 Cisco VPN|VPN 10 FT with VRRP LAN Side protocol|CX_VPN10_VRRP_v01
-Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN10_VRRP_Int_v01</p>
-<pre><code>- Reference the tables below for each feature template and it's variable. Use default for fields that are not specifically mentioned.
-</code></pre>
+Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN10_VRRP_Int_v01
+</br>
+    - Reference the tables below for each feature template and it's variable. Use default for fields that are not specifically mentioned.</p>
 <ol>
 <li>CX_VPN0_Static_Route_v01</li>
 </ol>
@@ -696,7 +697,7 @@ Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN
 <td>8.8.8.8</td>
 </tr>
 <tr>
-<td>New Host Mapping</td>
+<td><strong>New Host Mapping</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -708,7 +709,7 @@ Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN
 <td>19.1.1.2</td>
 </tr>
 <tr>
-<td>IPV4 ROUTE</td>
+<td><strong>IPV4 ROUTE</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -720,11 +721,57 @@ Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN
 <td>Next Hop</td>
 </tr>
 <tr>
-<td>Next Hop</td>
+<td>Next Hop <strong>Device Specific variable</strong></td>
 <td>vpn0_default_next_hop1</td>
 </tr>
 </tbody>
 </table>
+<ol>
+<li>CX_VPN0_Transport1_v01</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>CX_VPN0_Transport1_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shutdown <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_shut</td>
+</tr>
+<tr>
+<td>Interface Name <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_intf</td>
+</tr>
+<tr>
+<td><strong>Static IP</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>IPv4 Address <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_IP_addr</td>
+</tr>
+<tr>
+<td><strong>TUNNEL</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Tunnel Interface</td>
+<td>On</td>
+</tr>
+<tr>
+<td>Color <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_color</td>
+</tr>
+<tr>
+<td>Restrict <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_restict</td>
+</tr>
+</tbody>
+</table>
+<p>3.</p>
 <p>Verify the IP information for br3-ce1 and br3-ce2, attendee will create</p>
 <ul>
 <li>3.1.8. <strong>Verify reachability from Site3 to other sites</strong><br><br></li>
