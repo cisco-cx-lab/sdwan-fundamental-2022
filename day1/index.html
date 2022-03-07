@@ -575,49 +575,50 @@ vSmart-1#
 </ul>
 <p><code>request platform software sdwan vedge_cloud activate chassis-number CSR-BEAF1155-A0C4-475C-99E0-26174C522B27 token b1efccd671c341ee997f0abfa1a54ed5</code></p>
 <ul>
-<li><strong>Step4</strong> Verify the control plane using command <code>show sdwan control connections</code></li>
+<li><strong>Step4</strong> Verify the control plane using command <code>show sdwan control connections</code> </br></li>
 </ul>
-<p>```
-  br3-ce1#show sdwan control connections
+<pre><code>  br3-ce1#show sdwan control connections
                                                                                        PEER                                          PEER                                          CONTROLLER
 PEER    PEER PEER            SITE       DOMAIN PEER                                    PRIV  PEER                                    PUB                                           GROUP
-TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  ORGANIZATION            LOCAL COLOR     PROXY STATE UPTIME      ID</p>
-<hr />
-<p>vsmart  dtls 1.1.1.3         1          1      19.1.1.4                                12346 19.1.1.4                                12346 Viptela-POC-Tool - 19827mpls            No    up     0:00:03:22  0
+TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  ORGANIZATION            LOCAL COLOR     PROXY STATE UPTIME      ID
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vsmart  dtls 1.1.1.3         1          1      19.1.1.4                                12346 19.1.1.4                                12346 Viptela-POC-Tool - 19827mpls            No    up     0:00:03:22  0
 vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827mpls            -     up     0:00:03:22  0
-vmanage dtls 1.1.1.1         1          0      19.1.1.3                                12446 19.1.1.3                                12446 Viptela-POC-Tool - 19827mpls            No    up     0:00:03:22  0</p>
-<p>br3-ce1#</p>
-<pre><code>
-  - **Step5** Repeat the above steps to onboard **br3-ce2**
+vmanage dtls 1.1.1.1         1          0      19.1.1.3                                12446 19.1.1.3                                12446 Viptela-POC-Tool - 19827mpls            No    up     0:00:03:22  0
 
+
+br3-ce1#
 </code></pre>
-<p>be3-ce2#$ware sdwan vedge_cloud activate chassis-number CSR-71B50FB7-31E9-4720-8490-36060C2F17E4 token ed6e7f32348441b8ad41a86434592949
+<ul>
+<li><strong>Step5</strong> Repeat the above steps to onboard <strong>br3-ce2</strong></li>
+</ul>
+<pre><code>be3-ce2#$ware sdwan vedge_cloud activate chassis-number CSR-71B50FB7-31E9-4720-8490-36060C2F17E4 token ed6e7f32348441b8ad41a86434592949
 be3-ce2#
 be3-ce2#
 be3-ce2#show sdwan control connections
                                                                                        PEER                                          PEER                                          CONTROLLER
 PEER    PEER PEER            SITE       DOMAIN PEER                                    PRIV  PEER                                    PUB                                           GROUP
-TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  ORGANIZATION            LOCAL COLOR     PROXY STATE UPTIME      ID</p>
-<hr />
-<p>vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827biz-internet    -     up     0:00:00:24  0
-vmanage dtls 1.1.1.1         1          0      19.1.1.3                                12446 19.1.1.3                                12446 Viptela-POC-Tool - 19827biz-internet    No    up     0:00:00:24  0</p>
-<pre><code>
-  - **Step6** Verify the new site from vManage dashboard
-
-  &lt;/br&gt;&lt;/br&gt;
-  &lt;img src=&quot;https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_6_b.png&quot; width=&quot;800&quot;/&gt;
-  &lt;/br&gt;&lt;/br&gt;
-
-Now you have successfully onboarded new site into the SDWAN fabric.
-
-- 3.1.7. **Develop device template for Site3 CE1 and CE2**&lt;br&gt;&lt;br&gt;
-
-In this task, attendee will create one device template that fits for both br3-ce1 and br3-ce2. There are connections between br3-ce1 and br3-ce2 for tloc-ext, which will be task for Day2's lab. Attendee doesn't need to add the tloc-ext interface on the template now.
-
-  - **Step1** Login to **br3-ce1** &amp; **br3-ce2** from ssh. Verify interface and IP information for br3-ce1 and br3-ce2
+TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  ORGANIZATION            LOCAL COLOR     PROXY STATE UPTIME      ID
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827biz-internet    -     up     0:00:00:24  0
+vmanage dtls 1.1.1.1         1          0      19.1.1.3                                12446 19.1.1.3                                12446 Viptela-POC-Tool - 19827biz-internet    No    up     0:00:00:24  0
 
 </code></pre>
-<p>br3-ce1#show ip int b
+<ul>
+<li><strong>Step6</strong> Verify the new site from vManage dashboard</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_6_b.png" width="800"/>
+  </br></br></p>
+<p>Now you have successfully onboarded new site into the SDWAN fabric.</p>
+<ul>
+<li>3.1.7. <strong>Develop device template for Site3 CE1 and CE2</strong><br><br></li>
+</ul>
+<p>In this task, attendee will create one device template that fits for both br3-ce1 and br3-ce2. There are connections between br3-ce1 and br3-ce2 for tloc-ext, which will be task for Day2's lab. Attendee doesn't need to add the tloc-ext interface on the template now.</p>
+<ul>
+<li><strong>Step1</strong> Login to <strong>br3-ce1</strong> &amp; <strong>br3-ce2</strong> from ssh. Verify interface and IP information for br3-ce1 and br3-ce2</li>
+</ul>
+<pre><code>br3-ce1#show ip int b
 Interface              IP-Address      OK? Method Status                Protocol
 GigabitEthernet1       10.1.3.2        YES other  up                    up
 GigabitEthernet2       unassigned      YES unset  up                    up
@@ -631,10 +632,9 @@ Sdwan-system-intf      1.1.1.5         YES unset  up                    up
 Loopback65528          192.168.1.1     YES other  up                    up
 NVI0                   unassigned      YES unset  up                    up
 Tunnel1                10.1.3.2        YES TFTP   up                    up
-br3-ce1#</p>
-<pre><code>
+br3-ce1#
 </code></pre>
-<p>br3-ce1#show ip int b
+<pre><code>br3-ce1#show ip int b
 Interface              IP-Address      OK? Method Status                Protocol
 GigabitEthernet1       10.1.3.2        YES other  up                    up
 GigabitEthernet2       unassigned      YES unset  up                    up
@@ -648,8 +648,9 @@ Sdwan-system-intf      1.1.1.5         YES unset  up                    up
 Loopback65528          192.168.1.1     YES other  up                    up
 NVI0                   unassigned      YES unset  up                    up
 Tunnel1                10.1.3.2        YES TFTP   up                    up
-br3-ce1#</p>
-<p>```</p>
+br3-ce1#
+
+</code></pre>
 <ul>
 <li>
 <p><strong>Step2</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</p>
