@@ -670,8 +670,61 @@ Cisco VPN|VPN 2 FT with VRRP LAN Side protocol|CX_VPN2_VRRP_v01
 Cisco VPN Interface Ethernet|VPN 2 LAN Interface with static IP and VRRP|CX_VPN2_VRRP_Int_v01
 Cisco VPN|VPN 10 FT with VRRP LAN Side protocol|CX_VPN10_VRRP_v01
 Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN10_VRRP_Int_v01</p>
-<pre><code>- Reference the tables below for each feature template and it's variable
+<pre><code>- Reference the tables below for each feature template and it's variable. Use default for fields that are not specifically mentioned.
 </code></pre>
+<ol>
+<li>CX_VPN0_Static_Route_v01</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Template Name</th>
+<th>CX_VPN0_Static_Route_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>CX_VPN0_Static_Route_v01</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Primary DNS Address (IPv4)</td>
+<td>8.8.8.8</td>
+</tr>
+<tr>
+<td>New Host Mapping</td>
+<td></td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>List of IP Address</td>
+</tr>
+<tr>
+<td>vbond-test-drive</td>
+<td>19.1.1.2</td>
+</tr>
+<tr>
+<td>IPV4 ROUTE</td>
+<td></td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>0.0.0.0/0</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>Next Hop</td>
+</tr>
+<tr>
+<td>Next Hop</td>
+<td>vpn0_default_next_hop1</td>
+</tr>
+</tbody>
+</table>
 <p>Verify the IP information for br3-ce1 and br3-ce2, attendee will create</p>
 <ul>
 <li>3.1.8. <strong>Verify reachability from Site3 to other sites</strong><br><br></li>
