@@ -655,12 +655,23 @@ br3-ce1#
 <li>
 <p><strong>Step2</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</p>
 <ul>
-<li>Add the following feature templates<br />
-  Template Type|Purpose of the template|Template Name
-  |---|---|---|
-  |Cisco VPN|VPN 0 FT with single static route|CX_VPN0_Static_Route_v01|
-  |Cisco VPN Interface Ethernet|VPN 0 transport Interface with static IP|CX_VPN0_Transport1_v01|
-  |Cisco VPN|VPN 1 FT with VRRP LAN Side protocol|CX_VPN1_VRRP_v01|</li>
+<li>
+<p>Add the following feature templates
+<strong>Note: attendee will use factory default for the other required feature templates for building device template. In production deployment, you should always use custom specific feature template</strong>
+Template Type|Purpose of the template|Template Name
+---|---|---
+Cisco VPN|VPN 0 FT with single static route|CX_VPN0_Static_Route_v01
+Cisco VPN Interface Ethernet|VPN 0 transport Interface with static IP|CX_VPN0_Transport1_v01
+Cisco VPN|VPN 1 FT with VRRP LAN Side protocol|CX_VPN1_VRRP_v01
+Cisco VPN Interface Ethernet|VPN 1 LAN Interface with static IP and VRRP|CX_VPN1_VRRP_Int_v01
+Cisco VPN|VPN 2 FT with VRRP LAN Side protocol|CX_VPN2_VRRP_v01
+Cisco VPN Interface Ethernet|VPN 2 LAN Interface with static IP and VRRP|CX_VPN2_VRRP_Int_v01
+Cisco VPN|VPN 10 FT with VRRP LAN Side protocol|CX_VPN10_VRRP_v01
+Cisco VPN Interface Ethernet|VPN 10 LAN Interface with static IP and VRRP|CX_VPN10_VRRP_Int_v01</p>
+</li>
+<li>
+<p>Reference the tables below for each feature template and it's variable</p>
+</li>
 </ul>
 </li>
 </ul>
