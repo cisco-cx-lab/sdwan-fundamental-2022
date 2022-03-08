@@ -655,7 +655,7 @@ br3-ce1#
 <li>
 <p><strong>Step2</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</p>
 <ul>
-<li>Add the following feature templates</li>
+<li>Add the following feature templates for <strong>CSR1000v</strong> device model</li>
 </ul>
 </li>
 </ul>
@@ -725,35 +725,102 @@ br3-ce1#
 <p></br>
 - Reference the tables below for each feature template and it's variable. Use default for fields that are not specifically mentioned.
 </br></p>
-<ol>
-<li>1. CX_VPN0_Static_Route_v01</li>
-
-Template Name|CX_VPN0_Static_Route_v01
----|---
-Description|CX_VPN0_Static_Route_v01
-VPN|0
-Primary DNS Address (IPv4)|8.8.8.8
-**New Host Mapping**||
-Hostname|List of IP Address
-vbond-test-drive|19.1.1.2
-**IPV4 ROUTE**|
-Prefix|0.0.0.0/0
-Gateway|Next Hop
-Next Hop **Device Specific variable**|vpn0_default_next_hop1
-
-<li>2. CX_VPN0_Transport1_v01</li>
-
-Template|CX_VPN0_Transport1_v01
----|---
-Shutdown **Device Specific variable**|vpn0_transport1_shut
-Interface Name **Device Specific variable**|vpn0_transport1_intf
-**Static IP**|
-IPv4 Address **Device Specific variable**|vpn0_transport1_IP_addr
-**TUNNEL**|
-Tunnel Interface|On
-Color **Device Specific variable**|vpn0_transport1_color
-Restrict **Device Specific variable**|vpn0_transport1_restict
-</ol>
+<pre><code>1. CX_VPN0_Static_Route_v01
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Template Name</th>
+<th>CX_VPN0_Static_Route_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>CX_VPN0_Static_Route_v01</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Primary DNS Address (IPv4)</td>
+<td>8.8.8.8</td>
+</tr>
+<tr>
+<td><strong>New Host Mapping</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>List of IP Address</td>
+</tr>
+<tr>
+<td>vbond-test-drive</td>
+<td>19.1.1.2</td>
+</tr>
+<tr>
+<td><strong>IPV4 ROUTE</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>0.0.0.0/0</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>Next Hop</td>
+</tr>
+<tr>
+<td>Next Hop <strong>Device Specific variable</strong></td>
+<td>vpn0_default_next_hop1</td>
+</tr>
+</tbody>
+</table>
+<pre><code>2. CX_VPN0_Transport1_v01
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>CX_VPN0_Transport1_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shutdown <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_shut</td>
+</tr>
+<tr>
+<td>Interface Name <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_intf</td>
+</tr>
+<tr>
+<td><strong>Static IP</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>IPv4 Address <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_IP_addr</td>
+</tr>
+<tr>
+<td><strong>TUNNEL</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Tunnel Interface</td>
+<td>On</td>
+</tr>
+<tr>
+<td>Color <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_color</td>
+</tr>
+<tr>
+<td>Restrict <strong>Device Specific variable</strong></td>
+<td>vpn0_transport1_restict</td>
+</tr>
+</tbody>
+</table>
 <pre><code>3. CX_VPN1_VRRP_v01
 </code></pre>
 <table>
@@ -1019,6 +1086,370 @@ Restrict **Device Specific variable**|vpn0_transport1_restict
 <tr>
 <td>IPv4 Address <strong>Device Specific variable</strong></td>
 <td>vpn512_IP_addr</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Step3</strong> Click on <strong>Device</strong> tab on the top of Templates Configuration to switch to Device template configuration.</li>
+</ul>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_7_a.png" width="800"/>
+</br></br></p>
+<ul>
+<li><strong>Step4</strong> Click <strong>Create Template</strong> drop down menu and select <strong>From Feature Template</strong></li>
+</ul>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_7_b.png" width="800"/>
+</br></br></p>
+<ul>
+<li><strong>Step5</strong> Create the device template as show in tabel below</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Device Model</th>
+<th>CSR1000v</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device Role</td>
+<td>SDWAN Edge</td>
+</tr>
+<tr>
+<td>Template Name</td>
+<td>CX_CSR1Kv_SIte3_v01</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>CX_CSR1Kv_SIte3_v01</td>
+</tr>
+<tr>
+<td><strong>Basic Information</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Cisco System</td>
+<td>Default_BootStrap_Cisco_System_Template</td>
+</tr>
+<tr>
+<td>Cisco Logging</td>
+<td>Default_Logging_Cisco_V01</td>
+</tr>
+<tr>
+<td>Cisco AAA</td>
+<td>Factory_Default_AAA_CISCO_Template</td>
+</tr>
+<tr>
+<td>Cisco OMP</td>
+<td>Default_AWS_TGW_CSR_OMP_IPv46_V01</td>
+</tr>
+<tr>
+<td>Cisco BFD</td>
+<td>Default_BFD_Cisco_V01</td>
+</tr>
+<tr>
+<td>Cisco Security</td>
+<td>Default_Security_Cisco_V01</td>
+</tr>
+<tr>
+<td><strong>Transport &amp; Management VPN</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Cisco VPN 0</td>
+<td>CX_VPN0_Static_Route_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN Interface Ethernet</td>
+<td>CX_VPN0_Transport1_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN 512</td>
+<td>CX_VPN512_V01</td>
+</tr>
+<tr>
+<td><strong>Service VPN</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Add VPN</td>
+<td>CX_VPN1_VRRP_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN Interface Ethernet</td>
+<td>CX_VPN1_VRRP_Int_v01</td>
+</tr>
+<tr>
+<td>Add VPN</td>
+<td>CX_VPN2_VRRP_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN Interface Ethernet</td>
+<td>CX_VPN2_VRRP_Int_v01</td>
+</tr>
+<tr>
+<td>Add VPN</td>
+<td>CX_VPN10_VRRP_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN Interface Ethernet</td>
+<td>CX_VPN10_VRRP_Int_v01</td>
+</tr>
+</tbody>
+</table>
+<p>Click <strong>Create</strong> to create the device template</p>
+<ul>
+<li><strong>Step6</strong> Back to the device template configuration portal; locate the newly created <strong>CX_CSR1Kv_SIte3_v01</strong>; click on the <strong>...</strong> and select <strong>Attach Devices</strong></li>
+<li><strong>Step7</strong> highlight <strong>br3-ce1</strong> and <strong>br3-ce2</strong> on the left, and lick the <strong>&gt;</strong> to move it <strong>selected Devices</strong>, then click <strong>Attach</strong></li>
+</ul>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_7_c.png" width="800"/>
+</br></br></p>
+<ul>
+<li><strong>Step8</strong> Fill in the value as show in the table for each device</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>System IP</th>
+<th>1.1.1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname</td>
+<td>br3-ce1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn10_intf)</td>
+<td>GigabitEthernet7</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn10_IP_addr)</td>
+<td>192.168.40.2/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn10_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Priority(vpn10_vrrp_priority)</td>
+<td>110</td>
+</tr>
+<tr>
+<td>IP Address(vpn10_vrrp_IP)</td>
+<td>192.168.40.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn2_intf)</td>
+<td>GigabitEthernet6</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn2_IP_addr)</td>
+<td>10.40.200.2/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn2_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Priority(vpn2_vrrp_priority)</td>
+<td>110</td>
+</tr>
+<tr>
+<td>IP Address(vpn2_vrrp_IP)</td>
+<td>10.40.200.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn1_intf)</td>
+<td>GigabitEthernet5</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn1_IP_addr)</td>
+<td>10.40.100.2/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn1_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Priority(vpn1_vrrp_priority)</td>
+<td>110</td>
+</tr>
+<tr>
+<td>IP Address(vpn1_vrrp_IP)</td>
+<td>10.40.100.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn512_intf)</td>
+<td>GigabitEthernet8</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn512_IP_addr)</td>
+<td>192.168.150.12/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn512_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Address(vpn0_default_next_hop1)</td>
+<td>10.1.3.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn0_transport1_intf)</td>
+<td>GigabitEthernet1</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn0_transport1_IP_addr)</td>
+<td>10.1.3.2/24</td>
+</tr>
+<tr>
+<td>Color(vpn0_transport1_color)</td>
+<td>mpls</td>
+</tr>
+<tr>
+<td>Restrict(vpn0_transport1_restict)</td>
+<td>check</td>
+</tr>
+<tr>
+<td>Shutdown(vpn0_transport1_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>br3-ce1</td>
+</tr>
+<tr>
+<td>System IP</td>
+<td>1.1.1.5</td>
+</tr>
+<tr>
+<td>Site ID</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>System IP</th>
+<th>1.1.1.6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname</td>
+<td>br3-ce2</td>
+</tr>
+<tr>
+<td>Interface Name(vpn10_intf)</td>
+<td>GigabitEthernet7</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn10_IP_addr)</td>
+<td>192.168.40.3/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn10_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Priority(vpn10_vrrp_priority)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>IP Address(vpn10_vrrp_IP)</td>
+<td>192.168.40.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn2_intf)</td>
+<td>GigabitEthernet6</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn2_IP_addr)</td>
+<td>10.40.200.3/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn2_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Priority(vpn2_vrrp_priority)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>IP Address(vpn2_vrrp_IP)</td>
+<td>10.40.200.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn1_intf)</td>
+<td>GigabitEthernet5</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn1_IP_addr)</td>
+<td>10.40.100.3/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn1_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Priority(vpn1_vrrp_priority)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>IP Address(vpn1_vrrp_IP)</td>
+<td>10.40.100.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn512_intf)</td>
+<td>GigabitEthernet8</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn512_IP_addr)</td>
+<td>192.168.150.13/24</td>
+</tr>
+<tr>
+<td>Shutdown(vpn512_intf_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Address(vpn0_default_next_hop1)</td>
+<td>19.1.4.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn0_transport1_intf)</td>
+<td>GigabitEthernet1</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn0_transport1_IP_addr)</td>
+<td>19.1.4.6/24</td>
+</tr>
+<tr>
+<td>Color(vpn0_transport1_color)</td>
+<td>biz-internet</td>
+</tr>
+<tr>
+<td>Restrict(vpn0_transport1_restict)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Shutdown(vpn0_transport1_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>br3-ce2</td>
+</tr>
+<tr>
+<td>System IP</td>
+<td>1.1.1.6</td>
+</tr>
+<tr>
+<td>Site ID</td>
+<td>300</td>
 </tr>
 </tbody>
 </table>
