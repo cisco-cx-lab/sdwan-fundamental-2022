@@ -549,10 +549,565 @@ site1-r1(config-if)#
 <p><strong>3.2.4. Build Tloc-ext for Site3</strong></p>
 </li>
 </ul>
-<p>In this task, attendee will </p>
+<p>In this task, attendee will add transport redundancy for site3. There are two connections between br3-ce1 and br3-ce2. The tloc extension interface is GigabitEthernet3 on both edge routers. br3-ce1 GigabitEthernet3 connects to br3-ce2 GigabitEthernet1, and br3-ce2 GigabitEthernet3 connects to br3-ce1 GigabitEthernet2.</p>
+<p>In real world deployment, MPLS transport over TLOC-Ext typically uses BGP to advertise IP for TLOC Extension, so controllers and other WAN Edges can reach the TLOC. Internet transport over TLOC-Ext uses NAT to translate the IP for TLOC Extension, so controllers and other WAN Edge can reach the TLOC. In the lab, static routes are pre-configured on transport network to provide reachability for transports over TLOC-Ext. BGP and NAT are not required to build TLOC-Ext for this lab, but in production BGP and NAT are typically required for TLOC-Ext.  </p>
 <ul>
-<li><strong>3.2.5. Config Central Control Policy for Hub-Spoke Topology</strong></li>
+<li><strong>Step1</strong> Add following feature templates for TLOC-Ext</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>Template Type</th>
+<th>Purpose of the template</th>
+<th>Template Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cisco VPN</td>
+<td>VPN 0 FT with 2 static default route</td>
+<td>CX_VPN0_2xStatic_Route_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN Interface Ethernet</td>
+<td>VPN 0 transport Interface 2 with static IP</td>
+<td>CX_VPN0_Transport2_v01</td>
+</tr>
+<tr>
+<td>Cisco VPN Interface Ethernet</td>
+<td>VPN 0 TLOC Extension Interface</td>
+<td>CX_VPN0_Tloc_Ext_v01</td>
+</tr>
+</tbody>
+</table>
+<p></br>
+- Reference the tables below for each feature template and it's variable. Use default for fields that are not specifically mentioned.
+</br></p>
+<pre><code>1. CX_VPN0_2xStatic_Route_v01
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Template Name</th>
+<th>CX_VPN0_2xStatic_Route_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Description</td>
+<td>CX_VPN0_2xStatic_Route_v01</td>
+</tr>
+<tr>
+<td>VPN</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Primary DNS Address (IPv4)</td>
+<td>8.8.8.8</td>
+</tr>
+<tr>
+<td><strong>New Host Mapping</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td>List of IP Address</td>
+</tr>
+<tr>
+<td>vbond-test-drive</td>
+<td>19.1.1.2</td>
+</tr>
+<tr>
+<td><strong>IPV4 ROUTE</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>0.0.0.0/0</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>Next Hop</td>
+</tr>
+<tr>
+<td>Next Hop <strong>Device Specific variable</strong></td>
+<td>vpn0_default_next_hop1</td>
+</tr>
+<tr>
+<td>Next Hop <strong>Device Specific variable</strong></td>
+<td>vpn0_default_next_hop2</td>
+</tr>
+</tbody>
+</table>
+<pre><code>2. CX_VPN0_Transport2_v01
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>CX_VPN0_Transport2_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shutdown <strong>Device Specific variable</strong></td>
+<td>vpn0_transport2_shut</td>
+</tr>
+<tr>
+<td>Interface Name <strong>Device Specific variable</strong></td>
+<td>vpn0_transport2_intf</td>
+</tr>
+<tr>
+<td><strong>Static IP</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>IPv4 Address <strong>Device Specific variable</strong></td>
+<td>vpn0_transport2_IP_addr</td>
+</tr>
+<tr>
+<td><strong>TUNNEL</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Tunnel Interface</td>
+<td>On</td>
+</tr>
+<tr>
+<td>Color <strong>Device Specific variable</strong></td>
+<td>vpn0_transport2_color</td>
+</tr>
+<tr>
+<td>Restrict <strong>Device Specific variable</strong></td>
+<td>vpn0_transport2_restict</td>
+</tr>
+</tbody>
+</table>
+<pre><code>3. CX_VPN0_Tloc_Ext_v01
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>CX_VPN0_Tloc_Ext_v01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shutdown <strong>Device Specific variable</strong></td>
+<td>tloc_if_shutdown</td>
+</tr>
+<tr>
+<td>Interface Name <strong>Device Specific variable</strong></td>
+<td>tloc_if_name</td>
+</tr>
+<tr>
+<td><strong>Static IP</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>IPv4 Address <strong>Device Specific variable</strong></td>
+<td>tloc_if_ipv4_address</td>
+</tr>
+<tr>
+<td>TLOC Extension</td>
+<td>tloc_extension</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Step2</strong> Locate device template <strong>CX_CSR1Kv_SIte3_v01</strong>; click <strong>...</strong> and select <strong>Edit</strong></li>
+<li>Add the new feature template to the <strong>Transport &amp; Management VPN</strong> section</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_4_a.png" width="800"/>
+ </br></br></p>
+<ul>
+<li><strong>Step3</strong> Click Update to enter values for variables in the new feature templates</li>
+<li>Fill in the values of new variables for each device</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>System IP</th>
+<th>1.1.1.5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname</td>
+<td>br3-ce1</td>
+</tr>
+<tr>
+<td>Address(vpn_next_hop_ip_address_2)</td>
+<td>10.40.21.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn0_transport2_intf)</td>
+<td>GigabitEthernet2</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn0_transport2_IP_addr)</td>
+<td>10.40.21.2/24</td>
+</tr>
+<tr>
+<td>Color(vpn0_transport2_color)</td>
+<td>public-internet</td>
+</tr>
+<tr>
+<td>Restrict(vpn0_transport2_restict)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Shutdown(vpn0_transport2_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Interface Name(tloc_if_name)</td>
+<td>GigabitEthernet3</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(tloc_if_ipv4_address)</td>
+<td>10.40.12.1/24</td>
+</tr>
+<tr>
+<td>TLOC Extension(tloc_extension)</td>
+<td>GigabitEthernet1</td>
+</tr>
+<tr>
+<td>Shutdown(tloc_if_shutdown)</td>
+<td>uncheck</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>System IP</th>
+<th>1.1.1.6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname</td>
+<td>br3-ce2</td>
+</tr>
+<tr>
+<td>Address(vpn_next_hop_ip_address_2)</td>
+<td>10.40.12.1</td>
+</tr>
+<tr>
+<td>Interface Name(vpn0_transport2_intf)</td>
+<td>GigabitEthernet1</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(vpn0_transport2_IP_addr)</td>
+<td>10.40.12.2/24</td>
+</tr>
+<tr>
+<td>Color(vpn0_transport2_color)</td>
+<td>mpls</td>
+</tr>
+<tr>
+<td>Restrict(vpn0_transport2_restict)</td>
+<td>check</td>
+</tr>
+<tr>
+<td>Shutdown(vpn0_transport2_shut)</td>
+<td>uncheck</td>
+</tr>
+<tr>
+<td>Interface Name(tloc_if_name)</td>
+<td>GigabitEthernet3</td>
+</tr>
+<tr>
+<td>IPv4 Address/ prefix-length(tloc_if_ipv4_address)</td>
+<td>10.40.21.1/24</td>
+</tr>
+<tr>
+<td>TLOC Extension(tloc_extension)</td>
+<td>GigabitEthernet2</td>
+</tr>
+<tr>
+<td>Shutdown(tloc_if_shutdown)</td>
+<td>uncheck</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Update the template and push new configuration to br3-ce1 and br3-ce2</p>
+</li>
+<li>
+<p><strong>Step4</strong> Login to <strong>br3-ce1</strong> and <strong>br3-ce2</strong> to verify control and data connection from new transport over TLOC-Ext</p>
+</li>
+</ul>
+<pre><code>
+br3-ce1#show sdwan control connections
+                                                                                       PEER                                          PEER                                          CONTROLLER
+PEER    PEER PEER            SITE       DOMAIN PEER                                    PRIV  PEER                                    PUB                                           GROUP
+TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  ORGANIZATION            LOCAL COLOR     PROXY STATE UPTIME      ID
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vsmart  dtls 1.1.1.3         1          1      19.1.1.4                                12346 19.1.1.4                                12346 Viptela-POC-Tool - 19827mpls            No    up     2:08:27:53  0
+vsmart  dtls 1.1.1.3         1          1      19.1.1.4                                12346 19.1.1.4                                12346 Viptela-POC-Tool - 19827public-internet No    up     0:00:01:32  0
+vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827mpls            -     up     2:08:27:54  0
+vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827public-internet -     up     0:00:01:33  0
+vmanage dtls 1.1.1.1         1          0      19.1.1.3                                12446 19.1.1.3                                12446 Viptela-POC-Tool - 19827mpls            No    up     2:08:27:53  0
+
+
+br3-ce1#show sdwan bfd session
+                                      SOURCE TLOC      REMOTE TLOC                                      DST PUBLIC                      DST PUBLIC         DETECT      TX
+SYSTEM IP        SITE ID  STATE       COLOR            COLOR            SOURCE IP                       IP                              PORT        ENCAP  MULTIPLIER  INTERVAL(msec  UPTIME          TRANSITIONS
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.10.1.1         10       up          mpls             mpls             10.1.3.2                        10.1.0.2                        12346       ipsec  7           1000           10 2:08:27:57   1
+1.10.1.2         10       up          mpls             mpls             10.1.3.2                        10.1.1.2                        12346       ipsec  7           1000           10 2:08:27:57   1
+1.1.1.4          100      up          mpls             mpls             10.1.3.2                        10.1.2.2                        12366       ipsec  7           1000           10 0:09:34:54   1
+1.10.1.2         10       up          public-internet  biz-internet     10.40.21.2                      19.1.2.2                        12346       ipsec  7           1000           10 0:00:01:39   1
+1.1.1.4          100      up          public-internet  biz-internet     10.40.21.2                      19.1.3.6                        12386       ipsec  7           1000           10 0:00:01:39   1
+1.10.1.1         10       up          public-internet  biz-internet     10.40.21.2                      19.1.23.3                       12346       ipsec  7           1000           10 0:00:01:39   1
+
+br3-ce1#
+</code></pre>
+<pre><code>
+br3-ce2#show sdwan control connections
+                                                                                       PEER                                          PEER                                          CONTROLLER
+PEER    PEER PEER            SITE       DOMAIN PEER                                    PRIV  PEER                                    PUB                                           GROUP
+TYPE    PROT SYSTEM IP       ID         ID     PRIVATE IP                              PORT  PUBLIC IP                               PORT  ORGANIZATION            LOCAL COLOR     PROXY STATE UPTIME      ID
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+vsmart  dtls 1.1.1.3         1          1      19.1.1.4                                12346 19.1.1.4                                12346 Viptela-POC-Tool - 19827mpls            No    up     0:00:02:01  0
+vsmart  dtls 1.1.1.3         1          1      19.1.1.4                                12346 19.1.1.4                                12346 Viptela-POC-Tool - 19827biz-internet    No    up     2:08:28:17  0
+vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827mpls            -     up     0:00:02:02  0
+vbond   dtls 0.0.0.0         0          0      19.1.1.2                                12346 19.1.1.2                                12346 Viptela-POC-Tool - 19827biz-internet    -     up     2:08:28:17  0
+vmanage dtls 1.1.1.1         1          0      19.1.1.3                                12446 19.1.1.3                                12446 Viptela-POC-Tool - 19827biz-internet    No    up     2:08:28:17  0
+
+
+br3-ce2#show sdwan bfd session
+                                      SOURCE TLOC      REMOTE TLOC                                      DST PUBLIC                      DST PUBLIC         DETECT      TX
+SYSTEM IP        SITE ID  STATE       COLOR            COLOR            SOURCE IP                       IP                              PORT        ENCAP  MULTIPLIER  INTERVAL(msec  UPTIME          TRANSITIONS
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.10.1.1         10       up          mpls             mpls             10.40.12.2                      10.1.0.2                        12346       ipsec  7           1000           10 0:00:02:08   1
+1.10.1.2         10       up          mpls             mpls             10.40.12.2                      10.1.1.2                        12346       ipsec  7           1000           10 0:00:02:09   1
+1.1.1.4          100      up          mpls             mpls             10.40.12.2                      10.1.2.2                        12366       ipsec  7           1000           10 0:00:02:08   1
+1.10.1.2         10       up          biz-internet     biz-internet     19.1.4.6                        19.1.2.2                        12346       ipsec  7           1000           10 2:08:28:19   1
+1.1.1.4          100      up          biz-internet     biz-internet     19.1.4.6                        19.1.3.6                        12386       ipsec  7           1000           10 0:09:35:28   0
+1.10.1.1         10       up          biz-internet     biz-internet     19.1.4.6                        19.1.23.3                       12346       ipsec  7           1000           10 2:08:28:19   1
+
+br3-ce2#
+
+</code></pre>
+<ul>
+<li>
+<p><strong>3.2.5. Config Central Control Policy for Hub-Spoke Topology</strong>
+In this task, attendee will configure a centralized policy to build Hub &amp; Spoke topology. Without any policy, by default the solution will build full mesh tunnel with all SDWAN sites. With hub &amp; spoke topology, attendee will limit the br1 and br3 only form tunnel with DC.</p>
+</li>
+<li>
+<p><strong>Step1</strong> In order to use centralized policy, vSmart is required to be in vManage mode.  </p>
+</li>
+<li>Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Templates</strong>.</li>
+<li>Click <strong>Create Template</strong> drop down and select <strong>CLI Template</strong></li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_a.png" width="800"/>
+  </br></br></p>
+<ul>
+<li><strong>Step2</strong> Select vSmart as device model and load running config from the existing vSmart as show below</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_b.png" width="800"/>
+  </br></br>
+  - Click Add to create the CLI device template</p>
+<ul>
+<li><strong>Step3</strong> Locate the newly created device template <strong>CX_vSmart_v01</strong>. Click <strong>...</strong> and select attach devices.</li>
+<li>Select vSmart-1 from panel on the left and move to the panel on the right. Attach to the CLI template.</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_c.png" width="800"/>
+  </br></br></p>
+<ul>
+<li><strong>Step4</strong> Navigate to vManage panel on the left and click <strong>Configuration - Policies</strong></li>
+<li>
+<p>Click <strong>Custom Options</strong> on the top right and select <strong>Lists</strong> under Centralized Policy
+  </br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_d.png" width="800"/>
+  </br></br></p>
+</li>
+<li>
+<p><strong>Step5</strong> Select <strong>Site</strong> list type from the left and add <strong>New Site List</strong></p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_e.png" width="800"/>
+  </br></br></p>
+<ul>
+<li>Add site list <strong>DC</strong> with site-id 10</li>
+<li>Add site list <strong>Spoke</strong> with site-id 100,300</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_f.png" width="800"/>
+  </br></br></p>
+<ul>
+<li><strong>Step6</strong> Select <strong>TLOC</strong> list type from the left and add <strong>New TLOC List</strong></li>
+<li>Add new TLOC List <strong>DC_TLOC</strong></li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_f2.png" width="800"/>
+ </br></br></p>
+<ul>
+<li><strong>Step7</strong> Click <strong>Custom Options</strong> and select <strong>Topology</strong> under Centralized Policy</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_g.png" width="800"/>
+  </br></br></p>
+<ul>
+<li><strong>Step8</strong> Add <strong>Custom Control (Route &amp; TLOC)</strong> under add topology drop down</li>
+<li>Name the new policy <strong>Hub_Spoke_v01</strong> with description <strong>Hub_Spoke_v01</strong></li>
+<li><strong>Step9</strong> Click <strong>Sequence Type</strong> on the left and select <strong>TLOC</strong></li>
+</ul>
+<p></br></br>
+   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_h.png" width="800"/>
+   </br></br></p>
+<ul>
+<li>
+<p>Select <strong>Sequence Rule</strong> to add first rule</p>
+<ul>
+<li>Under Match tab</li>
+<li>Click <strong>Site</strong> under Match condition</li>
+<li>Select <strong>DC</strong> as Site List under Match Conditions</li>
+<li>Under <strong>Actions</strong></li>
+<li>Check <strong>Accept</strong></li>
+<li>Click <strong>Save Match And Actions</strong> to add this rule</li>
+</ul>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_i.png" width="800"/>
+</br></br></p>
+</li>
+<li>
+<p><strong>Step10</strong> Click <strong>Sequence Type</strong> on the left and select <strong>Route</strong></p>
+</li>
+</ul>
+<p></br></br>
+   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_j.png" width="800"/>
+   </br></br></p>
+<ul>
+<li>
+<p>Select <strong>Sequence Rule</strong> to add first rule</p>
+<ul>
+<li>Under Match tab</li>
+<li>Click <strong>Site</strong> under Match condition</li>
+<li>Select <strong>DC</strong> as Site List under Match Conditions</li>
+<li>Under <strong>Actions</strong></li>
+<li>Check <strong>Accept</strong></li>
+<li>Click <strong>Save Match And Actions</strong> to add this rule</li>
+</ul>
+<p></br></br>
+<img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_k.png" width="800"/>
+</br></br></p>
+<ul>
+<li>Select <strong>Sequence Rule</strong> to add second rule</li>
+<li>Under Match tab</li>
+<li>Click <strong>Site</strong> under Match condition</li>
+<li>Select <strong>Spoke</strong> as Site List under Match Conditions</li>
+<li>Under <strong>Actions</strong></li>
+<li>Check <strong>Accept</strong>, Click TLOC under Actions</li>
+<li>Select <strong>DC_TLOC</strong> as TLOC List</li>
+<li>Click <strong>Save Match And Actions</strong> to add this rule</li>
+</ul>
+<p></br></br>
+ <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_l.png" width="800"/>
+ </br></br></p>
+</li>
+<li>
+<p><strong>Save Control Policy</strong></p>
+</li>
+<li>
+<p><strong>Step11</strong> Click <strong>Configuration - Policies</strong> and select <strong>Add Policy</strong> under <strong>Centralized Policy</strong></p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_m.png" width="800"/>
+  </br></br></p>
+<ul>
+<li>Click <strong>Next</strong> proceed to <strong>Configure Topology and VPN Membership</strong>. Click <strong>Add topology</strong> drop down under Topology and select <strong>Import Existing Topology</strong></li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_n.png" width="800"/>
+  </br></br></p>
+<ul>
+<li>Import <strong>Hub_Spoke_v01</strong> policy under Customer Control policy type</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_o.png" width="800"/>
+  </br></br></p>
+<ul>
+<li>Click <strong>Next</strong> proceed to <strong>Apply Policies to Sites and VPNs</strong></li>
+<li>Under <strong>Topology</strong> panel, click <strong>New Site List</strong> under Hub_Spoke_v01</li>
+<li>
+<p>Select <strong>Spoke</strong> under <strong>Outbound Site List</strong> and click Add
+  </br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_p.png" width="800"/>
+  </br></br>       </p>
+</li>
+<li>
+<p>Name Policy <strong>CX_Central_Policy_V01</strong> and click <strong>Save Policy</strong></p>
+</li>
+<li>
+<p><strong>Step11</strong> On the centralized policy page, locate the new policy, Click <strong>...</strong> and select <strong>Activate</strong> to push the policy configuration to vSmart-1</p>
+</li>
+</ul>
+<p></br></br>
+  <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_2_5_q.png" width="800"/>
+  </br></br>       </p>
+<ul>
+<li><strong>Step12</strong> Login to br1-ce1 from SSH and run <code>show sdwan bfd sessions</code> to verify br1 only has tunnel to DC</li>
+</ul>
+<p>```
+ br1-ce1#show sdwan bfd sessions
+                                      SOURCE TLOC      REMOTE TLOC                                      DST PUBLIC                      DST PUBLIC         DETECT      TX
+SYSTEM IP        SITE ID  STATE       COLOR            COLOR            SOURCE IP                       IP                              PORT        ENCAP  MULTIPLIER  INTERVAL(msec  UPTIME          TRANSITIONS</p>
+<hr />
+<p>1.10.1.1         10       up          mpls             mpls             10.1.2.2                        10.1.0.2                        12346       ipsec  7           1000           10 0:11:03:18   1
+1.10.1.2         10       up          mpls             mpls             10.1.2.2                        10.1.1.2                        12346       ipsec  7           1000           10 0:11:03:17   1
+1.10.1.2         10       up          biz-internet     biz-internet     19.1.3.6                        19.1.2.2                        12346       ipsec  7           1000           10 0:11:03:13   0
+1.10.1.1         10       up          biz-internet     biz-internet     19.1.3.6                        19.1.23.3                       12346       ipsec  7           1000           10 0:11:03:13   0</p>
+<pre><code>
+- On the terminal, run `show ip route vrf 1` to verify the next hop for br3 prefix **10.40.100.0/24** is DC Edge router.
+
+</code></pre>
+<p>br1-ce1#show ip route vrf 1</p>
+<p>Routing Table: 1
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       &amp; - replicated local route overrides by connected</p>
+<p>Gateway of last resort is not set</p>
+<pre><code>  10.0.0.0/8 is variably subnetted, 8 subnets, 2 masks
+</code></pre>
+<p>m        10.1.12.0/24 [251/0] via 1.10.1.2, 11:04:50, Sdwan-system-intf
+                      [251/0] via 1.10.1.1, 11:04:50, Sdwan-system-intf
+m        10.10.11.0/24 [251/0] via 1.10.1.1, 11:04:50, Sdwan-system-intf
+m        10.10.12.0/24 [251/0] via 1.10.1.2, 11:04:50, Sdwan-system-intf
+m        10.10.100.0/24 [251/0] via 1.10.1.2, 11:04:50, Sdwan-system-intf
+                        [251/0] via 1.10.1.1, 11:04:50, Sdwan-system-intf
+m        10.30.100.0/24 [251/0] via 1.10.1.2, 11:04:50, Sdwan-system-intf
+                        [251/0] via 1.10.1.1, 11:04:50, Sdwan-system-intf
+m        10.40.100.0/24 [251/0] via 1.10.1.2, 00:02:54, Sdwan-system-intf
+                        [251/0] via 1.10.1.1, 00:02:54, Sdwan-system-intf
+C        10.200.100.0/24 is directly connected, GigabitEthernet4
+L        10.200.100.3/32 is directly connected, GigabitEthernet4</p>
+<p>```</p>
+<p><strong>CONFIGURATION! You have completed the lab! Here are the tasks you learned today</strong>
+- Manually onboard a wan edge router with minimal config.
+- Migrate a legacy site to sdwan site
+- Build topology for tloc-ext to improve site redundancy
+- Use centralized policy to build hub and spoke topology</p>
               
             </div>
           </div>
