@@ -58,6 +58,18 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Day 2 Tasks</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#321-onboard-br1-ce1">3.2.1. Onboard BR1-CE1</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#322-make-br1-ce1-as-vrrp-primary">3.2.2. Make BR1-CE1 as VRRP primary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#324-build-tloc-ext-for-site3">3.2.4. Build Tloc-ext for Site3</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#325-config-central-control-policy-for-hub-spoke-topology">3.2.5. Config Central Control Policy for Hub-Spoke Topology</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration-you-have-completed-the-lab-here-are-the-tasks-you-learned-today">CONFIGURATION! You have completed the lab! Here are the tasks you learned today</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -106,9 +118,7 @@
 <p>In Day'2 lab, attendee will first learn how to manually onboard the virtual cedge with minimal configuration. After that, attendee will migrate a site from non-sdwan to sdwan without introducing big service disruption. The same strategy can be used in real world site migration.</p>
 <p>The tloc-ext is a common feature used for remote site deployment. Attendee will learn how to create tloc-ext on an existing SDWAN site to increase the site transport redundancy.</p>
 <p>Centralized policy is the most powerful feature offered by Cisco SDWAN solution. Attendee will learn how to configure the most common hub &amp; spoke topology using Centralized control policy.</p>
-<ul>
-<li><strong>3.2.1. Onboard BR1-CE1</strong></li>
-</ul>
+<h4 id="321-onboard-br1-ce1"><strong>3.2.1. Onboard BR1-CE1</strong></h4>
 <p>In this task, attendee will onboard <strong>br1-ce1</strong> to the fabric. Unlike the task from Day1 which br3-ce1/br3-ce2 are pre-configured with minimal configuration, in this task, attendee will configure the minimal configured required to onboard br1-ce1.</p>
 <ul>
 <li>
@@ -487,9 +497,7 @@ br1-ce1#show vrrp brief
   Gi6                  1 IPv4 110     0  N   Y  MASTER  192.168.10.3(local) 192.168.10.1
 
 </code></pre>
-<ul>
-<li><strong>3.2.2. Make BR1-CE1 as VRRP primary</strong></li>
-</ul>
+<h4 id="322-make-br1-ce1-as-vrrp-primary"><strong>3.2.2. Make BR1-CE1 as VRRP primary</strong></h4>
 <p>In this task, attendee will migrate branch1 from legacy to SDWAN fabric by modifying the VRRP priority on br1-ce1.
 <strong>Note</strong> Optionally you can verify the packet loss by send continually ping from br1-vm1</p>
 <pre><code>Last login: Mon Feb 14 21:48:53 2022
@@ -522,7 +530,8 @@ br1-ce1#show vrrp brief
   Gi5                  1 IPv4 110     0  N   Y  MASTER  10.200.200.3(local) 10.200.200.1
   Gi6                  1 IPv4 110     0  N   Y  MASTER  192.168.10.3(local) 192.168.10.1
 br1-ce1#</p>
-<pre><code>- **3.2.3. Verify reachability from Site1 to other sites**
+<pre><code>
+#### **3.2.3. Verify reachability from Site1 to other sites**
 
 In this task, attendee will remove the old non-SDWAN router from br1 and verify the connectivity from br1-vm1.
 
@@ -542,13 +551,9 @@ site1-r1(config-if)#shu
 site1-r1(config-if)#
 </code></pre>
 <ul>
-<li>
-<p>Verify the <em>br1-vm1</em> still have connectivity to other sites.</p>
-</li>
-<li>
-<p><strong>3.2.4. Build Tloc-ext for Site3</strong></p>
-</li>
+<li>Verify the <em>br1-vm1</em> still have connectivity to other sites.</li>
 </ul>
+<h4 id="324-build-tloc-ext-for-site3"><strong>3.2.4. Build Tloc-ext for Site3</strong></h4>
 <p>In this task, attendee will add transport redundancy for site3. There are two connections between br3-ce1 and br3-ce2. The tloc extension interface is GigabitEthernet3 on both edge routers. br3-ce1 GigabitEthernet3 connects to br3-ce2 GigabitEthernet1, and br3-ce2 GigabitEthernet3 connects to br3-ce1 GigabitEthernet2.</p>
 <p>In real world deployment, MPLS transport over TLOC-Ext typically uses BGP to advertise IP for TLOC Extension, so controllers and other WAN Edges can reach the TLOC. Internet transport over TLOC-Ext uses NAT to translate the IP for TLOC Extension, so controllers and other WAN Edge can reach the TLOC. In the lab, static routes are pre-configured on transport network to provide reachability for transports over TLOC-Ext. BGP and NAT are not required to build TLOC-Ext for this lab, but in production BGP and NAT are typically required for TLOC-Ext.  </p>
 <ul>
@@ -895,14 +900,10 @@ SYSTEM IP        SITE ID  STATE       COLOR            COLOR            SOURCE I
 br3-ce2#
 
 </code></pre>
+<h4 id="325-config-central-control-policy-for-hub-spoke-topology"><strong>3.2.5. Config Central Control Policy for Hub-Spoke Topology</strong></h4>
+<p>In this task, attendee will configure a centralized policy to build Hub &amp; Spoke topology. Without any policy, by default the solution will build full mesh tunnel with all SDWAN sites. With hub &amp; spoke topology, attendee will limit the br1 and br3 only form tunnel with DC.</p>
 <ul>
-<li>
-<p><strong>3.2.5. Config Central Control Policy for Hub-Spoke Topology</strong>
-In this task, attendee will configure a centralized policy to build Hub &amp; Spoke topology. Without any policy, by default the solution will build full mesh tunnel with all SDWAN sites. With hub &amp; spoke topology, attendee will limit the br1 and br3 only form tunnel with DC.</p>
-</li>
-<li>
-<p><strong>Step1</strong> In order to use centralized policy, vSmart is required to be in vManage mode.  </p>
-</li>
+<li><strong>Step1</strong> In order to use centralized policy, vSmart is required to be in vManage mode.  </li>
 <li>Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Templates</strong>.</li>
 <li>Click <strong>Create Template</strong> drop down and select <strong>CLI Template</strong></li>
 </ul>
@@ -1107,7 +1108,7 @@ C        10.200.100.0/24 is directly connected, GigabitEthernet4
 L        10.200.100.3/32 is directly connected, GigabitEthernet4
 
 </code></pre>
-<p><strong>CONFIGURATION! You have completed the lab! Here are the tasks you learned today</strong></p>
+<h6 id="configuration-you-have-completed-the-lab-here-are-the-tasks-you-learned-today"><strong>CONFIGURATION! You have completed the lab! Here are the tasks you learned today</strong></h6>
 <ul>
 <li>Manually onboard a wan edge router with minimal config.</li>
 <li>Migrate a legacy site to sdwan site</li>
