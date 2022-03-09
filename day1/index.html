@@ -57,6 +57,26 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Day 1 Tasks</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#31-day-1-tasks">3.1. Day 1 tasks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#311-verify-dc-connectivity">3.1.1. Verify DC connectivity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#312-vmanage-walk-through">3.1.2. vManage walk through</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#313-review-dc-edge-device-templates">3.1.3. Review DC Edge Device Templates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#314-add-ospf-to-dc-device-template">3.1.4. Add OSPF to DC Device Template</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#315-verify-network-prefixes-in-fabric">3.1.5. Verify network prefixes in fabric</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#316-onboard-wan-edge-in-site3">3.1.6. Onboard WAN Edge in Site3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#317-develop-device-template-for-site3-ce1-and-ce2">3.1.7. Develop device template for Site3 CE1 and CE2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#318-verify-reachability-from-site3-to-other-sites">3.1.8. Verify reachability from Site3 to other sites</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-this-concludes-all-tasks-for-day1s-lab-you-have-completed-the-following-tasks">CONFIGURATION! This concludes all tasks for day1's lab. You have completed the following tasks</a>
     </li>
     </ul>
                     </li>
@@ -118,19 +138,15 @@ Another controller deployment model is on-premise controller. Attendee can refer
 In this lab, all SDWAN controllers including vManage, vSmart and vBond are pre-configured for each pod.</p>
 <p>After controllers are up, the next step is to bring up the headend or datacenter. The headend or datacenter will function as transit site between SDWAN and non SDWAN site. In this lab, DC WAN Edges are pre-configured and onboarded to SDWAN fabric. Attendee needs to review the SDWAN basic template configuration and verify connectivity. To make the DC as transit site between SDWAN and non SDWAN, attendee needs to configure the WAN Edge router to establish OSPF neighbor with DC Router and redistribute the OSPF learned routes into OMP.</p>
 <hr />
-<ul>
-<li>
-<p>3.1.1. <strong>Verify DC connectivity</strong>
-In this task, attendee will verify reachability from DC to remote site1 and site2.
+<h4 id="311-verify-dc-connectivity">3.1.1. <strong>Verify DC connectivity</strong></h4>
+<p>In this task, attendee will verify reachability from DC to remote site1 and site2.
 Reference <strong>Device access</strong> table for login IP and credential. </P></p>
-</li>
-<li>
-<p><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.
+<ul>
+<li><strong>Step1</strong> SSH into <strong>DC1-WAN-Agg</strong> and verify it has BGP neighbor with the MPLS PE, and also learns other site prefixes over BGP.
 Run <code>show ip bgp summary</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_a.png" width="800"/>
-</br></br></p>
-</li>
+</br></br></li>
 </ul>
 <p>Run <code>show ip route bgp</code>
 </br></br>
@@ -146,9 +162,7 @@ Run <code>ping 10.200.100.100</code>, <code>ping 10.30.100.100</code>
 </br></br>
 <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_1_d.png" width="800"/>
 </br></br></p>
-<ul>
-<li>3.1.2. <strong>vManage walk through</strong></li>
-</ul>
+<h4 id="312-vmanage-walk-through">3.1.2. <strong>vManage walk through</strong></h4>
 <p>In this task, attendee will walk through the vManage GUI.</p>
 <ul>
 <li>
@@ -197,14 +211,10 @@ Login to vManage using <strong>admin/pocadmin</strong> for username/password, th
   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_2_g.png" width="800"/>
   </br></br></p>
 <p>Feel free to explore other operations on vManage portal.</p>
+<h4 id="313-review-dc-edge-device-templates">3.1.3. <strong>Review DC Edge Device Templates</strong></h4>
+<p>In this task, attendee will review the pre-configured device templates for <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>.</p>
 <ul>
-<li>
-<p>3.1.3. <strong>Review DC Edge Device Templates</strong>
-In this task, attendee will review the pre-configured device templates for <strong>dc1-cedge1</strong> and <strong>dc1-cedge2</strong>.</p>
-</li>
-<li>
-<p><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong> for the device and feature template.</p>
-</li>
+<li><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong> for the device and feature template.</li>
 </ul>
 <p></br></br>
   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_a.png" width="800"/>
@@ -223,9 +233,7 @@ In this task, attendee will review the pre-configured device templates for <stro
   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_3_c.png" width="800"/>
   </br></br></p>
 <p>A device template consists of few sections, each section has it own set of feature templates. The mandatory feature templates are marked as <strong>'*'</strong>.</p>
-<ul>
-<li>3.1.4. <strong>Add OSPF to DC Device Template</strong></li>
-</ul>
+<h4 id="314-add-ospf-to-dc-device-template">3.1.4. <strong>Add OSPF to DC Device Template</strong></h4>
 <p>In this section, attendee will modify the pre-configured device template and add OSPF as routing protocol for service side VPN. After configuring OSPF, attendee will verify OSPF neighbor with dc-wan-agg router.</p>
 <ul>
 <li><strong>Step1</strong> Navigate to the panel on the left and click <strong>Configuration - Templates</strong>, then click <strong>Feature</strong> tab on the top to switch to the feature template configuration.</li>
@@ -420,9 +428,7 @@ dc1-cedge2#
 
 </code></pre>
 <p>Other site prefixes <strong>"10.30.100.0/24"</strong>,<strong>"10.200.100.0/24"</strong> and <strong>"10.200.200.0/24"</strong> are learned on edge routers.</p>
-<ul>
-<li>3.1.5. <strong>Verify network prefixes in fabric</strong></li>
-</ul>
+<h4 id="315-verify-network-prefixes-in-fabric">3.1.5. <strong>Verify network prefixes in fabric</strong></h4>
 <p>In this task, attendee will learn how to verify OMP route in fabric, and also learn how to advertise routes into OMP.</p>
 <ul>
 <li><strong>Step1</strong> Login to vSmart-1 and run <code>show omp route vpn 1</code> </br></li>
@@ -554,9 +560,7 @@ VPN    PREFIX              FROM PEER        ID     LABEL    STATUS    TYPE      
 
 vSmart-1#
 </code></pre>
-<ul>
-<li>3.1.6. <strong>Onboard WAN Edge in Site3</strong><br><br></li>
-</ul>
+<h4 id="316-onboard-wan-edge-in-site3">3.1.6. <strong>Onboard WAN Edge in Site3</strong><br><br></h4>
 <p>In this section, attendee will add new site into the fabric by onboarding edge routers of the site.</p>
 <ul>
 <li><strong>Step1</strong> Login vManage from <strong><a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></strong>. Navigate to the panel on the left and click <strong>Configuration - Devices</strong></li>
@@ -611,9 +615,7 @@ vmanage dtls 1.1.1.1         1          0      19.1.1.3                         
   <img src="https://leitian123.github.io/sdwan-fundamental-2022/img/3_1_6_b.png" width="800"/>
   </br></br></p>
 <p>Now you have successfully onboarded new site into the SDWAN fabric.</p>
-<ul>
-<li>3.1.7. <strong>Develop device template for Site3 CE1 and CE2</strong><br><br></li>
-</ul>
+<h4 id="317-develop-device-template-for-site3-ce1-and-ce2">3.1.7. <strong>Develop device template for Site3 CE1 and CE2</strong><br><br></h4>
 <p>In this task, attendee will create one device template that fits for both br3-ce1 and br3-ce2. There are connections between br3-ce1 and br3-ce2 for tloc-ext, which will be task for Day2's lab. Attendee doesn't need to add the tloc-ext interface on the template now.</p>
 <ul>
 <li><strong>Step1</strong> Login to <strong>br3-ce1</strong> &amp; <strong>br3-ce2</strong> from ssh. Verify interface and IP information for br3-ce1 and br3-ce2</li>
@@ -1520,9 +1522,7 @@ br3-ce2#show vrrp brief
   Gi7                  1 IPv4 100   360  N   Y  BACKUP  192.168.40.2 192.168.40.1
 
 </code></pre>
-<ul>
-<li>3.1.8. <strong>Verify reachability from Site3 to other sites</strong><br><br></li>
-</ul>
+<h4 id="318-verify-reachability-from-site3-to-other-sites">3.1.8. <strong>Verify reachability from Site3 to other sites</strong><br><br></h4>
 <p>In this task, attendee will verify connectivity from site3 to other SDWAN site and non-SDWAN site</p>
 <ul>
 <li><strong>Step1</strong> login to <strong>br3-vm1</strong> from SSH or VNC.</li>
@@ -1560,7 +1560,7 @@ PING 10.10.100.100 (10.10.100.100) 56(84) bytes of data.
 rtt min/avg/max/mdev = 6.234/10.191/13.629/2.561 ms
 viptela@ubuntu:~$
 </code></pre>
-<p><strong>CONFIGURATION! This concludes all tasks for day1's lab. You have completed the following tasks</strong></p>
+<h3 id="configuration-this-concludes-all-tasks-for-day1s-lab-you-have-completed-the-following-tasks"><strong>CONFIGURATION! This concludes all tasks for day1's lab. You have completed the following tasks</strong></h3>
 <ul>
 <li>Configured OSPF as LAN side routing protocol using vManage feature template</li>
 <li>Configured DC as transit site between SDWAN and non SDWAN site</li>
