@@ -149,7 +149,7 @@
 <h2 id="2-lab-topology">2. Lab Topology</h2>
 <p>The lab is built with (NFV) network function virtualization. There is no physical appliance in the lab. You can find the lab interface and addressing details from below diagram.</p>
 <p></br><br>
-<img src="" width="600"/>
+<img src="https://leitian123.github.io/sdwan-bootcamp21/img/2_0_a.PNG" width="600"/>
 </br></br></p>
 <p>The connectivity and basic routing are pre-configured for the lab; here is the summary of the IP schema and information for each site.</p>
 <table>
@@ -178,31 +178,31 @@
 <td>MPLS Transport</td>
 <td>10.0.0.0/8</td>
 <td></td>
-<td>Static</td>
+<td>Static,BGP</td>
 </tr>
 <tr>
 <td>DC</td>
-<td></td>
-<td></td>
-<td></td>
+<td>10.10.100.0/24</td>
+<td>10</td>
+<td>OSPF</td>
 </tr>
 <tr>
 <td>Legacy Site</td>
-<td></td>
-<td></td>
-<td></td>
+<td>10.30.100.0/24</td>
+<td>N/A</td>
+<td>static</td>
 </tr>
 <tr>
 <td>Branch1</td>
-<td></td>
-<td></td>
-<td></td>
+<td>10.200.100.0/24,10.200.200.0/24,192.168.10.0/24</td>
+<td>100</td>
+<td>vrrp</td>
 </tr>
 <tr>
 <td>Branch2</td>
-<td></td>
-<td></td>
-<td></td>
+<td>10.40.100.0/24,10.40.200.0/24,192.168.14.0/24</td>
+<td>300</td>
+<td>vrrp</td>
 </tr>
 </tbody>
 </table>
